@@ -1,0 +1,22 @@
+window.DOMAINS=[
+{name:'ahmedbouamoud.com',title:'منصة الأستاذ أحمد بوعمود',url:'https://ahmedbouamoud.com',icon:'أ'},
+{name:'hanane.today',title:'مظلّة مشاريع الحنان',url:'https://hanane.today',icon:'ح'},
+{name:'agencetalbourjte.com',title:'وكالتي Talborjt',url:'https://agencetalbourjte.com',icon:'و'}];
+window.PROJECTS=[
+{id:'social',name:'منصة الاجتماعيات',category:'تعليم',status:'live',description:'منصة الموارد والدروس والاختبارات والإنفوغرافيات.',site:'https://ahmedbouamoud.com',repo:'https://github.com/AhmedBouamoud/Mdrsti',domain:'ahmedbouamoud.com',featured:true},
+{id:'jihawi',name:'رحلة الجهوي',category:'تعليم',status:'live',description:'مراجعة تفاعلية للاجتماعيات للثالثة إعدادي.',site:'https://rihla-jihawi.netlify.app',repo:'https://github.com/AhmedBouamoud/rihla-jihawi',domain:'Netlify',featured:true},
+{id:'mahali',name:'رحلة المحلي',category:'تعليم',status:'development',description:'مسارات دروس الأسدس الأول ورحلة تتويج.',site:'https://rihla-mahali.netlify.app',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/mahali',domain:'Netlify',featured:true},
+{id:'noor',name:'نور ريم — القرآن',category:'ريم',status:'development',description:'الاستماع والتكرار والتدرج في حفظ السور القصيرة.',site:'https://rihla-jihawi.netlify.app/noor-rim-quran/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/noor-rim-quran',domain:'Netlify',featured:true},
+{id:'noon',name:'عالم نون',category:'ريم',status:'development',description:'عالم قصصي تعليمي بألعاب متدرجة لريم.',site:'https://rihla-jihawi.netlify.app/alam-noon/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/alam-noon',domain:'Netlify',featured:true},
+{id:'timeline',name:'الخط الزمني',category:'تعليم',status:'prototype',description:'عرض الأحداث التاريخية زمنياً.',site:'https://rihla-jihawi.netlify.app/khat-zamani/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/khat-zamani',domain:'Netlify'},
+{id:'info',name:'الإنفوغرافيا التعليمية',category:'تعليم',status:'prototype',description:'موارد بصرية وإنفوغرافيات مرتبطة بالدروس.',site:'https://rihla-jihawi.netlify.app/infographie/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/infographie',domain:'Netlify'},
+{id:'daftar',name:'دفتر الأستاذ الذكي',category:'إدارة مدرسية',status:'development',description:'دفتر نصوص وحصص وفروض وعطل وطباعة.',site:'https://daftar-ostad.netlify.app',repo:'',domain:'Netlify',featured:true},
+{id:'harissa',name:'تطبيق الحراس العامين',category:'إدارة مدرسية',status:'development',description:'واجهة مساعدة للحراس العامين في المدارس الخاصة.',site:'https://harissa-hanane.netlify.app',repo:'',domain:'Netlify'},
+{id:'agency',name:'وكالتي Talborjt',category:'إدارة وأعمال',status:'live',description:'تتبع الفواتير والعمولات والتقارير.',site:'https://agencetalbourjte.com',repo:'',domain:'نطاق خاص',featured:true},
+{id:'tayibate',name:'نظام الطيبات',category:'صحة وتوعية',status:'live',description:'التغذية الصحية واختيار الطيب من الطعام.',site:'https://exquisite-gnome-aed92b.netlify.app/',repo:'https://github.com/AhmedBouamoud/Altayibate-',domain:'Netlify'},
+{id:'farhat',name:'فرحة ريم',category:'ريم',status:'development',description:'مشروع رقمي مرتبط بريم وقوتي في اختلافي.',site:'',repo:'https://github.com/AhmedBouamoud/farhat-reem',domain:'GitHub'},
+{id:'platform',name:'منصة الاجتماعيات 3AC',category:'تعليم',status:'development',description:'مستودع منصة الاجتماعيات للثالثة إعدادي.',site:'',repo:'https://github.com/AhmedBouamoud/ijtima3iyat-3ac-platform',domain:'GitHub'},
+{id:'review',name:'مراجعة الثالثة إعدادي',category:'تعليم',status:'development',description:'موارد وتمارين للمراجعة الشاملة.',site:'',repo:'https://github.com/AhmedBouamoud/moraja3a-3ac',domain:'GitHub'},
+{id:'music',name:'منظم موسيقى السيارة',category:'أدوات',status:'development',description:'تنظيم ملفات MP3 في مجلدات مناسبة للراديو.',site:'',repo:'https://github.com/AhmedBouamoud/music-usb',domain:'GitHub'},
+{id:'dara',name:'DARA — شبكة تجربة المدينة',category:'إدارة وأعمال',status:'planning',description:'منصة تجارية للمقاهي والمطاعم وتجارب أكادير.',site:'',repo:'',domain:'قيد التخطيط',featured:true}
+];
