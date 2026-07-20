@@ -1,0 +1,17 @@
+{
+  "name": "رحلة الأولى باك",
+  "shortName": "رحلة الأولى",
+  "tagline": "دروس الاجتماعيات الكاملة في مسار واضح قابل للتطوير",
+  "institution": "مؤسسة الحنان الخاصة",
+  "author": "الأستاذ أحمد بوعمود",
+  "level": "السنة الأولى بكالوريا",
+  "version": "0.2.0",
+  "updated": "2026-07-20",
+  "features": {
+    "search": true,
+    "progress": true,
+    "print": true,
+    "fontScale": true,
+    "darkMode": true
+  }
+}
