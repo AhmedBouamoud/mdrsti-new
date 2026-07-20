@@ -1,0 +1,59 @@
+name: Publish approved Rihlat Aloula Bac
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-approved-rihlat-aloula.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout hanane.today source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download the approved preview package
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/approved-first-bac
+          git clone --depth 1 --branch rihlat-aloula-bac-preview \
+            https://github.com/AhmedBouamoud/ahmed-projet.git \
+            /tmp/approved-first-bac
+          cat /tmp/approved-first-bac/.rihlat-deploy/chunk*.b64 \
+            | tr -d '\n\r' \
+            | base64 --decode \
+            > /tmp/rihlat-aloula-approved.zip
+
+      - name: Replace the production First Bac folder
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf rihlat-aloula-bac
+          mkdir -p rihlat-aloula-bac
+          unzip -q /tmp/rihlat-aloula-approved.zip -d rihlat-aloula-bac
+          test -s rihlat-aloula-bac/index.html
+          test -s rihlat-aloula-bac/lesson.html
+          test -s rihlat-aloula-bac/about.html
+
+      - name: Commit production version
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A rihlat-aloula-bac
+          if git diff --cached --quiet; then
+            echo 'The approved production version is already published.'
+          else
+            git commit -m 'Publish approved رحلة الأولى باك on hanane.today'
+            git push origin main
+          fi
