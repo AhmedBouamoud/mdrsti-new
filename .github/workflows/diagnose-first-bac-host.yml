@@ -1,0 +1,54 @@
+name: Diagnose First Bac host
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-first-bac-host.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnose:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Probe candidate production URLs
+        shell: bash
+        run: |
+          set +e
+          mkdir -p .deployment-status
+          : > .deployment-status/first-bac-host-diagnostic.txt
+          urls=(
+            'https://hanane.today/'
+            'https://hanane.today/rihlat-aloula-bac'
+            'https://hanane.today/rihlat-aloula-bac/'
+            'https://hanane.today/rihlat-aloula-bac/index'
+            'https://hanane.today/rihlat-aloula-bac/index.html'
+            'https://mdrsti-new.vercel.app/'
+            'https://mdrsti-new.vercel.app/rihlat-aloula-bac'
+            'https://mdrsti-new.vercel.app/rihlat-aloula-bac/'
+          )
+          for url in "${urls[@]}"; do
+            safe=$(echo "$url" | tr '/:.' '_')
+            code=$(curl -L -sS --connect-timeout 5 --max-time 15 -o "/tmp/$safe.html" -w '%{http_code}' "$url")
+            exit_code=$?
+            match=no
+            grep -q 'رحلة الأولى باك' "/tmp/$safe.html" 2>/dev/null && match=yes
+            title=$(grep -o '<title>[^<]*' "/tmp/$safe.html" 2>/dev/null | head -1 | sed 's/<title>//' | tr '\n' ' ')
+            printf '%s | http=%s | curl=%s | match=%s | title=%s\n' "$url" "$code" "$exit_code" "$match" "$title" >> .deployment-status/first-bac-host-diagnostic.txt
+          done
+          date -u +'%Y-%m-%dT%H:%M:%SZ' >> .deployment-status/first-bac-host-diagnostic.txt
+      - name: Save diagnostics
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/first-bac-host-diagnostic.txt
+          git diff --cached --quiet || git commit -m 'Diagnose رحلة الأولى باك hosting URLs'
+          git push origin main
