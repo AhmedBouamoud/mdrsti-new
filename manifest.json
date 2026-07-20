@@ -1,0 +1,19 @@
+{
+  "name": "مركز مشاريع أحمد بوعمود",
+  "short_name": "مركز المشاريع",
+  "description": "مظلّة المشاريع التعليمية والرقمية للأستاذ أحمد بوعمود.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f2438",
+  "theme_color": "#0f2438",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
