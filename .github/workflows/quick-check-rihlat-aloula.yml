@@ -1,0 +1,42 @@
+name: Quick check Rihlat Aloula URL
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/quick-check-rihlat-aloula.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check URL once
+        shell: bash
+        run: |
+          set +e
+          url='https://hanane.today/rihlat-aloula-bac/'
+          code=$(curl -L -sS --connect-timeout 5 --max-time 12 -o /tmp/live.html -w '%{http_code}' "$url")
+          curl_exit=$?
+          matched=false
+          grep -q 'رحلة الأولى باك' /tmp/live.html 2>/dev/null && matched=true
+          status=pending
+          [ "$code" = '200' ] && [ "$matched" = true ] && status=online
+          mkdir -p .deployment-status
+          checked_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          printf '{\n  "url": "%s",\n  "status": "%s",\n  "http_code": "%s",\n  "curl_exit": %s,\n  "content_match": %s,\n  "checked_at": "%s"\n}\n' "$url" "$status" "$code" "$curl_exit" "$matched" "$checked_at" > .deployment-status/rihlat-aloula-quick.json
+      - name: Save result
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/rihlat-aloula-quick.json
+          git diff --cached --quiet || git commit -m 'Quick-check رحلة الأولى باك URL'
+          git push origin main
