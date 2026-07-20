@@ -1,6 +1,25 @@
 [build]
-  command = "rm -rf dist unpack package.zip && base64 -d package.b64 > package.zip && mkdir -p unpack dist && unzip -q package.zip -d unpack && cp -a unpack/ahmed-projects-hub/. dist/"
+  command = "rm -rf dist unpack package.zip && base64 -d package.b64 > package.zip && mkdir -p unpack dist && unzip -q package.zip -d unpack && cp -a unpack/ahmed-projects-hub/. dist/ && cp -a rihlat-aloula-bac dist/rihlat-aloula-bac && rm -f dist/rihlat-aloula-bac/netlify.toml"
   publish = "dist"
+
+# رحلة الأولى باك — على النطاق الفرعي aloula.hanane.today (يخدم محتوى مجلد rihlat-aloula-bac من جذره)
+[[redirects]]
+  from = "https://aloula.hanane.today/rihlat-aloula-bac/*"
+  to = "/rihlat-aloula-bac/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://aloula.hanane.today/*"
+  to = "/rihlat-aloula-bac/:splat"
+  status = 200
+  force = true
+
+# تطبيع المسار بدون شرطة نهائية على hanane.today حتى تشتغل الروابط النسبية
+[[redirects]]
+  from = "/rihlat-aloula-bac"
+  to = "/rihlat-aloula-bac/"
+  status = 301
 
 [[headers]]
   for = "/*"
