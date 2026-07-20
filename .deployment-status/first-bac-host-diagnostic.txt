@@ -6,7 +6,7 @@ https://hanane.today/rihlat-aloula-bac/index.html | http=404 | curl=0 | match=no
 https://aloula.hanane.today/ | http=000 | curl=6 | match=no | title=
 https://aloula.hanane.today/lesson.html | http=000 | curl=6 | match=no | title=
 https://aloula.hanane.today/about.html | http=000 | curl=6 | match=no | title=
-https://mdrsti-new.vercel.app/ | http=404 | curl=0 | match=no | title=
-https://mdrsti-new.vercel.app/rihlat-aloula-bac | http=404 | curl=0 | match=no | title=
-https://mdrsti-new.vercel.app/rihlat-aloula-bac/ | http=404 | curl=0 | match=no | title=
-2026-07-20T23:04:28Z
+https://markaz-ahmed-test-2026.vercel.app/ | http=200 | curl=0 | match=no | title=مركز مشاريع أحمد بوعمود 
+https://markaz-ahmed-test-2026.vercel.app/rihlat-aloula-bac/ | http=200 | curl=0 | match=yes | title=رحلة الأولى باك | الاجتماعيات 
+https://markaz-ahmed-test-2026.vercel.app/rihlat-aloula-bac/lesson.html | http=200 | curl=0 | match=yes | title=الدرس | رحلة الأولى باك 
+2026-07-20T23:17:47Z
