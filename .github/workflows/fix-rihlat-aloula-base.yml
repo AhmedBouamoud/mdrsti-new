@@ -1,0 +1,41 @@
+name: Fix Rihlat Aloula base path
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-rihlat-aloula-base.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add production base path
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          base = '<base href="/rihlat-aloula-bac/">'
+          for name in ('index.html', 'lesson.html', 'about.html'):
+              path = Path('rihlat-aloula-bac') / name
+              text = path.read_text(encoding='utf-8')
+              if base not in text:
+                  text = text.replace('<head>', '<head>' + base, 1)
+                  path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit base-path fix
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add rihlat-aloula-bac/index.html rihlat-aloula-bac/lesson.html rihlat-aloula-bac/about.html
+          git diff --cached --quiet || git commit -m 'Fix رحلة الأولى باك links under hanane.today'
+          git push origin main
