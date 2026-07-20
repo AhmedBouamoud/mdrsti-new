@@ -1,0 +1,60 @@
+name: Verify Rihlat Aloula domain
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'rihlat-aloula-bac/**'
+      - '.github/workflows/verify-rihlat-aloula-domain.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for Vercel and verify public URL
+        shell: bash
+        run: |
+          set -u
+          url='https://hanane.today/rihlat-aloula-bac/'
+          state='pending'
+          code='000'
+          matched='false'
+          for attempt in $(seq 1 24); do
+            code=$(curl -L -sS --max-time 25 -o /tmp/first-bac-live.html -w '%{http_code}' "$url" || true)
+            if [ "$code" = '200' ] && grep -q 'رحلة الأولى باك' /tmp/first-bac-live.html; then
+              state='online'
+              matched='true'
+              break
+            fi
+            sleep 10
+          done
+          mkdir -p .deployment-status
+          checked_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          cat > .deployment-status/rihlat-aloula-bac.json <<EOF
+          {
+            "site": "رحلة الأولى باك",
+            "url": "$url",
+            "status": "$state",
+            "http_code": "$code",
+            "content_match": $matched,
+            "checked_at": "$checked_at"
+          }
+          EOF
+
+      - name: Save verification result
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/rihlat-aloula-bac.json
+          git diff --cached --quiet || git commit -m 'Record رحلة الأولى باك domain status'
+          git push origin main
