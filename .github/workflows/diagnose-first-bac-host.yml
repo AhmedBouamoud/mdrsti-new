@@ -33,9 +33,9 @@ jobs:
             'https://aloula.hanane.today/'
             'https://aloula.hanane.today/lesson.html'
             'https://aloula.hanane.today/about.html'
-            'https://mdrsti-new.vercel.app/'
-            'https://mdrsti-new.vercel.app/rihlat-aloula-bac'
-            'https://mdrsti-new.vercel.app/rihlat-aloula-bac/'
+            'https://markaz-ahmed-test-2026.vercel.app/'
+            'https://markaz-ahmed-test-2026.vercel.app/rihlat-aloula-bac/'
+            'https://markaz-ahmed-test-2026.vercel.app/rihlat-aloula-bac/lesson.html'
           )
           for url in "${urls[@]}"; do
             safe=$(echo "$url" | tr '/:.' '_')
