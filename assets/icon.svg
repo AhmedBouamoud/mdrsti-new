@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="مركز مشاريع أحمد بوعمود">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#0f2438"/>
+      <stop offset="1" stop-color="#1f5f8b"/>
+    </linearGradient>
+  </defs>
+  <circle cx="110" cy="110" r="104" fill="url(#g)" stroke="#f3c85a" stroke-width="8"/>
+  <text x="110" y="150" text-anchor="middle" font-family="Tahoma, Arial, sans-serif" font-size="110" font-weight="bold" fill="#ffffff">أ</text>
+</svg>

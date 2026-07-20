@@ -3,51 +3,328 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#081426">
+  <meta name="theme-color" content="#0b1324">
+  <meta name="description" content="لوحة موحدة لتنظيم مواقع ومستودعات ومشاريع الأستاذ أحمد بوعمود">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
   <title>مركز مشاريع أحمد بوعمود</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#07101f;--card:#0f1d31;--card2:#142641;--line:#2b405e;--text:#f1f6ff;--muted:#9fb0c8;--gold:#f5a524;--green:#35c995;--blue:#69aaff;--violet:#b09aff}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 0,rgba(245,165,36,.14),transparent 28%),radial-gradient(circle at 0 30%,rgba(82,132,220,.11),transparent 30%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}.wrap{width:min(1180px,calc(100% - 22px));margin:auto;padding:12px 0 60px}.top{position:sticky;top:7px;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(8,20,36,.93);backdrop-filter:blur(14px)}.brand{display:flex;align-items:center;gap:10px}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),#e57e17);color:#251706;font-weight:900}.brand h1{margin:0;font-size:16px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.version{font-size:9px;color:#ffd27b;border:1px solid rgba(245,165,36,.3);background:rgba(245,165,36,.09);padding:6px 9px;border-radius:999px;white-space:nowrap}.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;align-items:center;padding:44px 6px 22px}.hero h2{font-size:clamp(30px,5vw,54px);line-height:1.25;margin:0 0 12px}.hero h2 span{color:var(--gold)}.hero p{color:var(--muted);line-height:2;font-size:14px;margin:0}.stats{border:1px solid var(--line);border-radius:24px;padding:19px;background:linear-gradient(155deg,var(--card2),#0b1729)}.big{font-size:54px;color:var(--gold);font-weight:900}.stats p{margin:5px 0 0;color:var(--muted);font-size:12px}.tools{display:grid;grid-template-columns:1fr auto;gap:10px;margin:10px 0}.search{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);outline:none;font:inherit}.sort{padding:0 12px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);font:inherit}.filters{display:flex;gap:7px;overflow:auto;padding:2px 0 12px;scrollbar-width:none}.filter{white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);padding:8px 12px;cursor:pointer;font:inherit;font-size:12px}.filter.on{background:var(--gold);border-color:var(--gold);color:#251706;font-weight:900}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{display:flex;flex-direction:column;min-height:230px;padding:16px;border:1px solid var(--line);border-radius:19px;background:linear-gradient(155deg,var(--card),#0a1729)}.head{display:flex;align-items:center;gap:10px}.icon{width:41px;height:41px;border-radius:12px;display:grid;place-items:center;background:var(--card2);border:1px solid var(--line);font-size:19px}.card h3{font-size:14px;margin:0;line-height:1.5}.meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.pill{font-size:9px;padding:3px 6px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}.pill.live{color:var(--green)}.pill.development{color:var(--blue)}.pill.prototype,.pill.planning{color:var(--violet)}.desc{color:var(--muted);font-size:11px;line-height:1.9;margin:14px 0;flex:1}.actions{display:flex;gap:7px;padding-top:11px;border-top:1px solid rgba(255,255,255,.06)}.actions a{flex:1;text-align:center;text-decoration:none;padding:9px 5px;border:1px solid var(--line);border-radius:10px;background:var(--card2);color:var(--text);font-size:10px}.actions a.primary{color:#ffd27b;border-color:rgba(245,165,36,.3);background:rgba(245,165,36,.08)}.actions a.off{opacity:.3;pointer-events:none}.empty{grid-column:1/-1;text-align:center;padding:45px;border:1px dashed var(--line);border-radius:18px;color:var(--muted)}footer{margin-top:30px;padding:18px 5px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:10px}@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}@media(max-width:650px){.wrap{width:calc(100% - 16px)}.brand small{display:none}.hero{padding-top:32px}.hero h2{font-size:34px}.tools{grid-template-columns:1fr}.sort{height:46px}.grid{grid-template-columns:1fr}}
+    :root{
+      --bg:#07101f;--panel:#0d192d;--panel2:#12213a;--line:#213653;
+      --text:#eef4ff;--muted:#9fb0c8;--accent:#f5a524;--accent2:#ffd166;
+      --green:#31c48d;--blue:#60a5fa;--purple:#a78bfa;--red:#fb7185;
+      --radius:22px;--shadow:0 18px 50px rgba(0,0,0,.28)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Cairo",system-ui,sans-serif;background:
+      radial-gradient(circle at 80% -10%,rgba(245,165,36,.15),transparent 32%),
+      radial-gradient(circle at 0 20%,rgba(96,165,250,.10),transparent 30%),var(--bg);
+      color:var(--text);min-height:100vh}
+    button,input,select,textarea{font:inherit}
+    a{color:inherit}
+    .shell{width:min(1220px,calc(100% - 28px));margin:auto;padding:24px 0 90px}
+    .topbar{position:sticky;top:10px;z-index:30;display:flex;align-items:center;justify-content:space-between;
+      gap:16px;padding:13px 16px;background:rgba(10,21,39,.88);border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(16px);border-radius:18px;box-shadow:var(--shadow)}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .logo{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:
+      linear-gradient(135deg,var(--accent),#e77d16);font-weight:900;font-size:19px;color:#1b1306;
+      box-shadow:0 8px 26px rgba(245,165,36,.28);flex:0 0 auto}
+    .brand h1{font-size:17px;margin:0;white-space:nowrap}
+    .brand p{font-size:11px;color:var(--muted);margin:2px 0 0}
+    .top-actions{display:flex;gap:8px}
+    .icon-btn,.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);cursor:pointer;
+      border-radius:13px;padding:10px 13px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+      transition:.2s}
+    .icon-btn:hover,.btn:hover{transform:translateY(-1px);border-color:#446286}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#e68417);color:#1b1306;border:none;font-weight:900}
+    .hero{padding:58px 8px 28px;display:grid;grid-template-columns:1.35fr .65fr;gap:22px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid rgba(245,165,36,.28);
+      border-radius:999px;background:rgba(245,165,36,.08);color:var(--accent2);font-size:12px;font-weight:800}
+    .hero h2{font-size:clamp(30px,5vw,58px);line-height:1.18;margin:17px 0 13px;letter-spacing:-1.5px}
+    .hero h2 span{color:var(--accent)}
+    .hero p{max-width:720px;color:var(--muted);font-size:15px;line-height:2;margin:0}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+    .hero-card{background:linear-gradient(155deg,rgba(18,33,58,.96),rgba(11,25,45,.86));border:1px solid var(--line);
+      border-radius:28px;padding:20px;box-shadow:var(--shadow);min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+    .hero-card .big{font-size:60px;font-weight:900;color:var(--accent);line-height:1}
+    .hero-card .mini{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+    .mini div{padding:11px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}
+    .mini strong{display:block;font-size:19px}.mini span{font-size:10px;color:var(--muted)}
+    .section{margin-top:25px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:14px}
+    .section-head h3{font-size:21px;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:4px 0 0}
+    .domains{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .domain-card{position:relative;overflow:hidden;padding:19px;border-radius:20px;background:var(--panel);
+      border:1px solid var(--line);text-decoration:none;transition:.2s;min-height:150px}
+    .domain-card:hover{transform:translateY(-3px);border-color:#4b6588}
+    .domain-icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:rgba(245,165,36,.13);
+      color:var(--accent);font-size:21px;font-weight:900}
+    .domain-card h4{margin:15px 0 2px;font-size:15px}.domain-card .domain-name{color:var(--accent2);font-size:12px}
+    .domain-card p{font-size:11px;line-height:1.8;color:var(--muted);margin:8px 0 0}
+    .domain-arrow{position:absolute;left:17px;top:17px;color:var(--muted)}
+    .toolbar{display:grid;grid-template-columns:1fr auto;gap:12px;margin:26px 0 13px}
+    .searchbox{position:relative}.searchbox input{width:100%;background:var(--panel);border:1px solid var(--line);
+      color:var(--text);border-radius:16px;padding:14px 45px 14px 15px;outline:none}
+    .searchbox input:focus{border-color:#57769e;box-shadow:0 0 0 4px rgba(96,165,250,.08)}
+    .searchbox span{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+    .filters{display:flex;gap:8px;overflow:auto;padding:1px 0 8px;scrollbar-width:none}
+    .filter{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--muted);
+      padding:9px 13px;border-radius:999px;cursor:pointer}
+    .filter.active{background:var(--accent);color:#241708;border-color:var(--accent);font-weight:900}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .project{background:linear-gradient(160deg,var(--panel),#0a172a);border:1px solid var(--line);border-radius:20px;
+      padding:17px;display:flex;flex-direction:column;min-height:245px;transition:.2s;position:relative}
+    .project:hover{transform:translateY(-2px);border-color:#405c80}
+    .project.featured::before{content:"مميز";position:absolute;left:14px;top:14px;font-size:9px;padding:4px 8px;
+      background:rgba(245,165,36,.12);border:1px solid rgba(245,165,36,.25);color:var(--accent2);border-radius:999px}
+    .project-top{display:flex;align-items:center;gap:11px;padding-left:48px}
+    .project-icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:var(--panel2);
+      border:1px solid var(--line);font-size:20px;flex:0 0 auto}
+    .project h4{margin:0;font-size:14px;line-height:1.5}.meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:5px}
+    .pill{font-size:9px;padding:4px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+    .pill.live{color:var(--green);border-color:rgba(49,196,141,.25);background:rgba(49,196,141,.06)}
+    .pill.development{color:var(--blue);border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.06)}
+    .pill.prototype,.pill.planning{color:var(--purple);border-color:rgba(167,139,250,.25);background:rgba(167,139,250,.06)}
+    .pill.archive{color:#94a3b8}
+    .description{color:var(--muted);font-size:11px;line-height:1.9;margin:14px 0;flex:1}
+    .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}.tag{font-size:9px;color:#b8c5d8;background:rgba(255,255,255,.035);padding:4px 7px;border-radius:8px}
+    .card-actions{display:flex;gap:7px;border-top:1px solid rgba(255,255,255,.06);padding-top:12px}
+    .card-actions a,.card-actions button{flex:1;text-decoration:none;border:1px solid var(--line);background:var(--panel2);
+      color:var(--text);padding:8px 7px;border-radius:11px;font-size:10px;cursor:pointer;text-align:center}
+    .card-actions .open{background:rgba(245,165,36,.1);border-color:rgba(245,165,36,.28);color:var(--accent2)}
+    .disabled{opacity:.35;pointer-events:none}
+    .fav{position:absolute;left:14px;bottom:14px;width:32px!important;min-width:32px;flex:0!important}
+    .fav.on{color:var(--accent);border-color:rgba(245,165,36,.4)}
+    .empty{grid-column:1/-1;text-align:center;padding:50px;background:var(--panel);border:1px dashed var(--line);border-radius:20px;color:var(--muted)}
+    .footer{margin-top:36px;padding:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px}
+    dialog{border:none;padding:0;background:transparent;color:var(--text);width:min(560px,calc(100% - 24px))}
+    dialog::backdrop{background:rgba(2,8,18,.78);backdrop-filter:blur(5px)}
+    .modal{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+    .modal h3{margin:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    label{font-size:11px;color:var(--muted)}label span{display:block;margin-bottom:5px}
+    input,select,textarea{width:100%;border:1px solid var(--line);background:#091629;color:var(--text);border-radius:12px;padding:11px;outline:none}
+    textarea{min-height:90px;resize:vertical}.wide{grid-column:1/-1}
+    .modal-actions{display:flex;gap:8px;justify-content:flex-start;margin-top:15px}
+    .toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+      background:#15243b;border:1px solid #304764;color:var(--text);padding:10px 16px;border-radius:12px;font-size:12px;
+      transition:.25s;z-index:100}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-card{min-height:180px}.projects{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:660px){
+      .shell{width:min(100% - 18px,1220px);padding-top:9px}.topbar{top:6px}.brand p{display:none}.brand h1{font-size:13px}
+      .logo{width:42px;height:42px}.top-actions .label{display:none}.hero{padding:36px 3px 18px}.hero h2{font-size:34px}
+      .domains,.projects{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.section-head{align-items:start}
+      .form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.footer{flex-direction:column}.project{min-height:225px}
+    }
   </style>
 </head>
 <body>
-<main class="wrap">
-  <header class="top"><div class="brand"><div class="logo">AB</div><div><h1>مركز مشاريع أحمد بوعمود</h1><small>المواقع • التطبيقات • المستودعات</small></div></div><span class="version">نسخة Vercel الصحيحة 16-07</span></header>
-  <section class="hero"><div><h2>كل مشاريعك في <span>لائحة واحدة واضحة</span></h2><p>افتح مشاريع التعليم، ريم، الإدارة والأعمال مباشرة من الهاتف، وابحث عنها حسب الاسم أو المجال.</p></div><aside class="stats"><div class="big" id="total">0</div><p>مشروعاً وتطبيقاً</p></aside></section>
-  <div class="tools"><input id="q" class="search" type="search" placeholder="ابحث باسم المشروع أو المجال..."><select id="sort" class="sort"><option value="featured">المميزة أولاً</option><option value="name">حسب الاسم</option><option value="status">حسب الحالة</option></select></div>
-  <div id="filters" class="filters"></div>
-  <section id="grid" class="grid"></section>
-  <footer>لوحة الأستاذ أحمد بوعمود — markaz-ahmed-test-2026.vercel.app</footer>
-</main>
-<script>
-const projects=[
-{id:'social',name:'منصة الاجتماعيات',category:'تعليم',status:'live',description:'منصة الموارد والدروس والاختبارات والإنفوغرافيات.',site:'https://ahmedbouamoud.com',repo:'https://github.com/AhmedBouamoud/Mdrsti',featured:true},
-{id:'jihawi',name:'رحلة الجهوي',category:'تعليم',status:'live',description:'مراجعة تفاعلية للاجتماعيات للثالثة إعدادي.',site:'https://rihla-jihawi.netlify.app',repo:'https://github.com/AhmedBouamoud/rihla-jihawi',featured:true},
-{id:'gateway',name:'بوابة الجهوي — الجيل الثاني',category:'تعليم',status:'development',description:'بوابة حديثة لتنظيم مسارات المراجعة والدخول إلى رحلة الجهوي.',site:'https://bawabat-al-jihawi.netlify.app',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/jihawi-gateway'},
-{id:'mahali',name:'رحلة المحلي',category:'تعليم',status:'development',description:'مسارات دروس الأسدس الأول ورحلة تتويج نهائية.',site:'https://rihla-mahali.netlify.app',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/mahali',featured:true},
-{id:'noor',name:'نور ريم — تعليم القرآن',category:'ريم',status:'development',description:'الاستماع والتكرار والتدرج في حفظ السور القصيرة.',site:'https://rihla-jihawi.netlify.app/noor-rim-quran/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/noor-rim-quran',featured:true},
-{id:'noon',name:'عالم نون',category:'ريم',status:'development',description:'عالم قصصي تعليمي بألعاب متدرجة يكون فيه الطفل هو البطل.',site:'https://rihla-jihawi.netlify.app/alam-noon/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/alam-noon',featured:true},
-{id:'timeline',name:'الخط الزمني',category:'تعليم',status:'prototype',description:'أداة تعليمية لعرض الأحداث التاريخية زمنياً.',site:'https://rihla-jihawi.netlify.app/khat-zamani/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/khat-zamani'},
-{id:'info',name:'الإنفوغرافيا التعليمية',category:'تعليم',status:'prototype',description:'موارد بصرية وإنفوغرافيات مرتبطة بالدروس.',site:'https://rihla-jihawi.netlify.app/infographie/',repo:'https://github.com/AhmedBouamoud/rihla-jihawi/tree/main/infographie'},
-{id:'ibtidai',name:'رحلة الابتدائي',category:'تعليم',status:'prototype',description:'نسخة مبسطة للصغار تعتمد المحطات والنقاط والتفاعل البصري.',site:'https://rihla-jihawi.netlify.app/ibtidai/',repo:''},
-{id:'daftar',name:'دفتر الأستاذ الذكي',category:'إدارة مدرسية',status:'development',description:'دفتر نصوص وحصص وفروض وعطل ونسخ جاهزة للطباعة.',site:'https://daftar-ostad.netlify.app',repo:'',featured:true},
-{id:'harissa',name:'تطبيق الحراس العامين',category:'إدارة مدرسية',status:'development',description:'واجهة مساعدة للحراس العامين في المدارس الخاصة.',site:'https://harissa-hanane.netlify.app',repo:''},
-{id:'agency',name:'وكالتي Talborjt',category:'إدارة وأعمال',status:'live',description:'تتبع الفواتير والعمولات والتقارير والنسخ الاحتياطي.',site:'https://agencetalbourjte.com',repo:'',featured:true},
-{id:'tayibate',name:'نظام الطيبات',category:'صحة وتوعية',status:'live',description:'موقع للتوعية بالتغذية الصحية واختيار الطيب من الطعام.',site:'https://exquisite-gnome-aed92b.netlify.app/',repo:'https://github.com/AhmedBouamoud/Altayibate-'},
-{id:'farhat',name:'فرحة ريم',category:'ريم',status:'development',description:'مشروع رقمي مرتبط بريم وشعار قوتي في اختلافي.',site:'',repo:'https://github.com/AhmedBouamoud/farhat-reem'},
-{id:'review',name:'مراجعة الثالثة إعدادي',category:'تعليم',status:'development',description:'موارد وتمارين للمراجعة الشاملة.',site:'',repo:'https://github.com/AhmedBouamoud/moraja3a-3ac'},
-{id:'music',name:'منظم موسيقى السيارة',category:'أدوات',status:'development',description:'تنظيم ملفات MP3 في مجلدات مناسبة لراديو السيارة.',site:'',repo:'https://github.com/AhmedBouamoud/music-usb'},
-{id:'dara',name:'DARA — شبكة تجربة المدينة',category:'إدارة وأعمال',status:'planning',description:'منصة تجارية للمقاهي والمطاعم وتجارب مدينة أكادير.',site:'',repo:'',featured:true}
-];
-const labels={live:'منشور',development:'قيد التطوير',prototype:'نموذج أولي',planning:'قيد التخطيط'};
-const icons={'تعليم':'📚','ريم':'🌟','إدارة مدرسية':'🏫','إدارة وأعمال':'📊','أدوات':'🧰','صحة وتوعية':'🌿'};
-let state={category:'الكل',query:'',sort:'featured'};
-const safe=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-function filtered(){let a=projects.filter(p=>(state.category==='الكل'||p.category===state.category)&&(!state.query||[p.name,p.category,p.description].join(' ').toLowerCase().includes(state.query.toLowerCase())));if(state.sort==='name')a.sort((x,y)=>x.name.localeCompare(y.name,'ar'));else if(state.sort==='status')a.sort((x,y)=>x.status.localeCompare(y.status));else a.sort((x,y)=>(+!!y.featured-+!!x.featured)||x.name.localeCompare(y.name,'ar'));return a}
-function renderFilters(){const cats=['الكل',...new Set(projects.map(p=>p.category))];filters.innerHTML=cats.map(c=>`<button class="filter ${state.category===c?'on':''}" data-c="${safe(c)}">${safe(c)}</button>`).join('');document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{state.category=b.dataset.c;render()})}
-function renderGrid(){const a=filtered();grid.innerHTML=a.length?a.map(p=>`<article class="card"><div class="head"><div class="icon">${icons[p.category]||'◈'}</div><div><h3>${safe(p.name)}</h3><div class="meta"><span class="pill ${p.status}">${labels[p.status]||safe(p.status)}</span><span class="pill">${safe(p.category)}</span></div></div></div><p class="desc">${safe(p.description)}</p><div class="actions"><a class="primary ${p.site?'':'off'}" href="${p.site||'#'}" target="_blank" rel="noopener">فتح الموقع</a><a class="${p.repo?'':'off'}" href="${p.repo||'#'}" target="_blank" rel="noopener">GitHub</a></div></article>`).join(''):'<div class="empty">لا توجد مشاريع مطابقة.</div>'}
-function render(){total.textContent=projects.length;renderFilters();renderGrid()}
-q.oninput=e=>{state.query=e.target.value;renderGrid()};sort.onchange=e=>{state.sort=e.target.value;renderGrid()};render();
-</script>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">AB</div>
+        <div><h1>مركز مشاريع أحمد بوعمود</h1><p>المواقع • التطبيقات • المستودعات</p></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="installBtn" hidden>⬇ <span class="label">تثبيت</span></button>
+        <button class="icon-btn" id="shareAllBtn">↗ <span class="label">مشاركة</span></button>
+        <button class="icon-btn" id="addBtn">＋ <span class="label">إضافة</span></button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">● لوحة واحدة لكل أعمالك الرقمية</div>
+        <h2>كل مشروع في مكانه،<br><span>وكل رابط في متناولك.</span></h2>
+        <p>لوحة شخصية تجمع النطاقات والمواقع المنشورة على Netlify ومستودعات GitHub والمشاريع التي ما زالت في طور البناء. ابحث، صنّف، افتح، شارك، أو أضف ملاحظاتك دون أن تضيع بين الروابط.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projectsSection">استعرض المشاريع</a>
+          <button class="btn" id="favoritesBtn">★ المفضلة</button>
+          <button class="btn" id="exportBtn">تصدير البيانات</button>
+          <label class="btn" style="cursor:pointer">استيراد<input id="importInput" type="file" accept=".json" hidden></label>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div><div class="big" id="totalCount">0</div><div style="color:var(--muted);font-size:12px;margin-top:6px">مشروعاً وموقعاً في لوحة واحدة</div></div>
+        <div class="mini">
+          <div><strong id="liveCount">0</strong><span>منشور</span></div>
+          <div><strong id="repoCount">0</strong><span>مرتبط بـ GitHub</span></div>
+          <div><strong>3</strong><span>نطاقات رئيسية</span></div>
+          <div><strong id="favCount">0</strong><span>في المفضلة</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div><h3>النطاقات الرئيسية</h3><p>الواجهات الكبرى التي تنظّم هويتك الرقمية.</p></div></div>
+      <div class="domains" id="domains"></div>
+    </section>
+
+    <section class="section" id="projectsSection">
+      <div class="section-head">
+        <div><h3>المشاريع والتطبيقات</h3><p id="resultText">جميع المشاريع</p></div>
+        <button class="btn" id="resetBtn">إعادة الضبط</button>
+      </div>
+      <div class="toolbar">
+        <div class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث باسم المشروع أو المجال أو الرابط..."></div>
+        <select id="sortSelect" aria-label="ترتيب المشاريع">
+          <option value="featured">المميزة أولاً</option>
+          <option value="name">حسب الاسم</option>
+          <option value="status">حسب الحالة</option>
+        </select>
+      </div>
+      <div class="filters" id="filters"></div>
+      <div class="projects" id="projects"></div>
+    </section>
+
+    <footer class="footer">
+      <span>لوحة شخصية للأستاذ أحمد بوعمود — تعمل على الهاتف والكمبيوتر.</span>
+      <span>البيانات المضافة والملاحظات والمفضلة تُحفظ على جهازك.</span>
+    </footer>
+  </main>
+
+  <dialog id="projectDialog">
+    <div class="modal">
+      <div class="modal-head"><h3>إضافة مشروع</h3><button class="icon-btn" data-close>✕</button></div>
+      <form id="projectForm">
+        <div class="form-grid">
+          <label><span>اسم المشروع *</span><input name="name" required></label>
+          <label><span>التصنيف</span><select name="category"><option>تعليم</option><option>ريم</option><option>إدارة مدرسية</option><option>إدارة وأعمال</option><option>أدوات</option><option>صحة وتوعية</option><option>أرشيف وتجارب</option></select></label>
+          <label><span>رابط الموقع</span><input name="site" type="url" placeholder="https://"></label>
+          <label><span>رابط GitHub</span><input name="repo" type="url" placeholder="https://github.com/..."></label>
+          <label><span>الحالة</span><select name="status"><option value="development">قيد التطوير</option><option value="live">منشور</option><option value="prototype">نموذج أولي</option><option value="planning">قيد التخطيط</option><option value="archive">أرشيف</option></select></label>
+          <label><span>النطاق أو المضيف</span><input name="domain" placeholder="Netlify / نطاق خاص"></label>
+          <label class="wide"><span>وصف مختصر</span><textarea name="description"></textarea></label>
+          <label class="wide"><span>وسوم مفصولة بفواصل</span><input name="tags" placeholder="تعليم، ريم، PWA"></label>
+        </div>
+        <div class="modal-actions"><button class="btn primary" type="submit">حفظ المشروع</button><button class="btn" type="button" data-close>إلغاء</button></div>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast"></div>
+  <script src="./data.js"></script>
+  <script>
+    const state={
+      category:"الكل", query:"", favoritesOnly:false, sort:"featured",
+      custom:JSON.parse(localStorage.getItem("ab_custom_projects")||"[]"),
+      favorites:new Set(JSON.parse(localStorage.getItem("ab_favorites")||"[]"))
+    };
+    const statusText={live:"منشور",development:"قيد التطوير",prototype:"نموذج أولي",planning:"قيد التخطيط",archive:"أرشيف"};
+    const categoryIcon={"تعليم":"📚","ريم":"🌟","إدارة مدرسية":"🏫","إدارة وأعمال":"📊","أدوات":"🧰","صحة وتوعية":"🌿","أرشيف وتجارب":"🗄️"};
+    const all=()=>[...window.PROJECTS,...state.custom];
+
+    function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove("show"),2200)}
+    function safeUrl(url){return /^https?:\/\//i.test(url||"")?url:"#"}
+    function esc(v=""){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
+    function saveFav(){localStorage.setItem("ab_favorites",JSON.stringify([...state.favorites]))}
+
+    function renderDomains(){
+      document.getElementById("domains").innerHTML=window.DOMAINS.map(d=>`
+        <a class="domain-card" href="${safeUrl(d.url)}" target="_blank" rel="noopener">
+          <span class="domain-arrow">↗</span><div class="domain-icon">${esc(d.icon)}</div>
+          <h4>${esc(d.title)}</h4><div class="domain-name">${esc(d.name)}</div><p>${esc(d.description)}</p>
+        </a>`).join("");
+    }
+
+    function renderFilters(){
+      const cats=["الكل",...new Set(all().map(p=>p.category))];
+      document.getElementById("filters").innerHTML=cats.map(c=>`<button class="filter ${state.category===c&&!state.favoritesOnly?"active":""}" data-filter="${esc(c)}">${esc(c)}</button>`).join("");
+      document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{state.category=b.dataset.filter;state.favoritesOnly=false;render()});
+    }
+
+    function shareProject(p){
+      const url=p.site||p.repo||"";
+      const text=`${p.name}\\n${p.description||""}${url?"\\n"+url:""}`;
+      if(navigator.share) navigator.share({title:p.name,text:p.description||"",url:url||location.href}).catch(()=>{});
+      else navigator.clipboard.writeText(text).then(()=>toast("تم نسخ بيانات المشروع"));
+    }
+
+    function filtered(){
+      let arr=all().filter(p=>{
+        const q=state.query.trim().toLowerCase();
+        const hay=[p.name,p.category,p.description,p.site,p.repo,p.domain,...(p.tags||[])].join(" ").toLowerCase();
+        return (!q||hay.includes(q))&&(state.category==="الكل"||p.category===state.category)&&(!state.favoritesOnly||state.favorites.has(p.id));
+      });
+      if(state.sort==="name") arr.sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+      else if(state.sort==="status") arr.sort((a,b)=>(a.status||"").localeCompare(b.status||""));
+      else arr.sort((a,b)=>(Number(b.featured)-Number(a.featured))||a.name.localeCompare(b.name,"ar"));
+      return arr;
+    }
+
+    function renderProjects(){
+      const arr=filtered(), box=document.getElementById("projects");
+      document.getElementById("resultText").textContent=`${arr.length} من أصل ${all().length} مشروعاً`;
+      if(!arr.length){box.innerHTML='<div class="empty">لا توجد مشاريع مطابقة. جرّب كلمة أخرى أو ألغِ التصفية.</div>';return}
+      box.innerHTML=arr.map(p=>`
+        <article class="project ${p.featured?"featured":""}">
+          <div class="project-top">
+            <div class="project-icon">${categoryIcon[p.category]||"◈"}</div>
+            <div><h4>${esc(p.name)}</h4><div class="meta"><span class="pill ${esc(p.status)}">${statusText[p.status]||esc(p.status)}</span><span class="pill">${esc(p.domain||p.host||"مشروع")}</span></div></div>
+          </div>
+          <p class="description">${esc(p.description||"لا يوجد وصف بعد.")}</p>
+          <div class="tags">${(p.tags||[]).slice(0,4).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+          <div class="card-actions">
+            <a class="open ${p.site?"":"disabled"}" href="${safeUrl(p.site)}" target="_blank" rel="noopener">فتح الموقع</a>
+            <a class="${p.repo?"":"disabled"}" href="${safeUrl(p.repo)}" target="_blank" rel="noopener">GitHub</a>
+            <button data-share="${esc(p.id)}">مشاركة</button>
+            <button class="fav ${state.favorites.has(p.id)?"on":""}" data-fav="${esc(p.id)}" title="المفضلة">★</button>
+          </div>
+        </article>`).join("");
+      document.querySelectorAll("[data-share]").forEach(b=>b.onclick=()=>shareProject(all().find(p=>p.id===b.dataset.share)));
+      document.querySelectorAll("[data-fav]").forEach(b=>b.onclick=()=>{
+        const id=b.dataset.fav;state.favorites.has(id)?state.favorites.delete(id):state.favorites.add(id);saveFav();render()
+      });
+    }
+
+    function renderStats(){
+      const items=all();
+      document.getElementById("totalCount").textContent=items.length;
+      document.getElementById("liveCount").textContent=items.filter(p=>p.status==="live").length;
+      document.getElementById("repoCount").textContent=items.filter(p=>p.repo).length;
+      document.getElementById("favCount").textContent=state.favorites.size;
+    }
+    function render(){renderStats();renderFilters();renderProjects()}
+    renderDomains();render();
+
+    document.getElementById("searchInput").oninput=e=>{state.query=e.target.value;renderProjects()};
+    document.getElementById("sortSelect").onchange=e=>{state.sort=e.target.value;renderProjects()};
+    document.getElementById("favoritesBtn").onclick=()=>{state.favoritesOnly=!state.favoritesOnly;state.category="الكل";render();toast(state.favoritesOnly?"عرض المفضلة فقط":"عرض جميع المشاريع")};
+    document.getElementById("resetBtn").onclick=()=>{state.category="الكل";state.query="";state.favoritesOnly=false;document.getElementById("searchInput").value="";render()};
+    document.getElementById("addBtn").onclick=()=>document.getElementById("projectDialog").showModal();
+    document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>document.getElementById("projectDialog").close());
+    document.getElementById("projectForm").onsubmit=e=>{
+      e.preventDefault();const fd=new FormData(e.target);
+      const p=Object.fromEntries(fd.entries());p.id="custom-"+Date.now();p.tags=(p.tags||"").split(/[,،]/).map(x=>x.trim()).filter(Boolean);p.host=p.domain||"مضاف يدوياً";
+      state.custom.unshift(p);localStorage.setItem("ab_custom_projects",JSON.stringify(state.custom));e.target.reset();document.getElementById("projectDialog").close();render();toast("تمت إضافة المشروع")
+    };
+    document.getElementById("shareAllBtn").onclick=()=>{
+      const live=all().filter(p=>p.site).map(p=>`• ${p.name}: ${p.site}`).join("\\n");
+      const text=`مشاريع أحمد بوعمود\\n\\n${live}`;
+      if(navigator.share) navigator.share({title:"مشاريع أحمد بوعمود",text,url:location.href}).catch(()=>{});
+      else navigator.clipboard.writeText(text).then(()=>toast("تم نسخ قائمة المواقع"));
+    };
+    document.getElementById("exportBtn").onclick=()=>{
+      const payload={version:1,exportedAt:new Date().toISOString(),customProjects:state.custom,favorites:[...state.favorites]};
+      const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}),a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);a.download="ahmed-projects-backup.json";a.click();URL.revokeObjectURL(a.href);toast("تم تصدير النسخة")
+    };
+    document.getElementById("importInput").onchange=async e=>{
+      try{const d=JSON.parse(await e.target.files[0].text());state.custom=Array.isArray(d.customProjects)?d.customProjects:[];state.favorites=new Set(Array.isArray(d.favorites)?d.favorites:[]);localStorage.setItem("ab_custom_projects",JSON.stringify(state.custom));saveFav();render();toast("تم استيراد البيانات")}
+      catch{toast("ملف غير صالح")}
+      e.target.value="";
+    };
+
+    let deferredPrompt;
+    window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBtn").hidden=false});
+    document.getElementById("installBtn").onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById("installBtn").hidden=true};
+    if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+  </script>
 </body>
 </html>

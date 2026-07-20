@@ -1,5 +1,5 @@
 [build]
-  command = "rm -rf dist unpack package.zip && base64 -d package.b64 > package.zip && mkdir -p unpack dist && unzip -q package.zip -d unpack && cp -a unpack/ahmed-projects-hub/. dist/ && cp -a rihlat-aloula-bac dist/rihlat-aloula-bac && rm -f dist/rihlat-aloula-bac/netlify.toml"
+  command = "rm -rf dist && mkdir -p dist/assets && cp index.html data.js manifest.json sw.js dist/ && cp -a assets/. dist/assets/ && cp -a rihlat-aloula-bac dist/rihlat-aloula-bac && rm -f dist/rihlat-aloula-bac/netlify.toml"
   publish = "dist"
 
 # رحلة الأولى باك — على النطاق الفرعي aloula.hanane.today (يخدم محتوى مجلد rihlat-aloula-bac من جذره)
