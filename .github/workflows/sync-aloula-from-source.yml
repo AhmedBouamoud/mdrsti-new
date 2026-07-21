@@ -1,0 +1,57 @@
+name: Sync Aloula production content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-aloula-from-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch approved Aloula source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/aloula-source
+          git clone --depth 1 --branch main \
+            https://github.com/AhmedBouamoud/Mdrsti.git \
+            /tmp/aloula-source
+          test -s /tmp/aloula-source/rihlat-aloula-bac/index.html
+          test -s /tmp/aloula-source/rihlat-aloula-bac/lessons-v2.html
+          test -s /tmp/aloula-source/rihlat-aloula-bac/data/lessons.json
+
+      - name: Install production content
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf rihlat-aloula-bac
+          cp -R /tmp/aloula-source/rihlat-aloula-bac ./rihlat-aloula-bac
+          grep -q 'نسخة المحتوى 2.0' rihlat-aloula-bac/index.html
+          grep -q 'ALOULA-HIS-06' rihlat-aloula-bac/lessons-v2.html
+          grep -q 'infographic-6' rihlat-aloula-bac/lessons-v2.html
+
+      - name: Commit and publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A rihlat-aloula-bac
+          if git diff --cached --quiet; then
+            echo 'Aloula production content is already current.'
+          else
+            git commit -m 'Publish Aloula lessons, database links, and infographics 2.0'
+            git push origin main
+          fi
