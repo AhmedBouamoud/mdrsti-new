@@ -1,0 +1,78 @@
+{
+  "version": 2,
+  "updatedAt": "2026-07-21",
+  "lessons": [
+    {
+      "number": 1,
+      "slug": "capitalist-transformations-19c",
+      "title": "التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم الرأسمالي خلال القرن 19م",
+      "period": "القرن 19م",
+      "doc": "الدرس 1: التحولات الاقتصادية والمالية (مفصل)",
+      "notion": "https://app.notion.com/p/3a1cf32c8d388154a290cd68488323a9",
+      "source": "https://docs.google.com/document/d/1djlThYAgMzTtvZW_TFAmUr9oH2a3c4zACOTkcxRkcMI",
+      "summary": "تحولات الصناعة والفلاحة والتجارة والمال والمجتمع والفكر، وانتقال الرأسمالية نحو مرحلتها المالية.",
+      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-01-capitalist-transformations.webp", "previewEmbedded": true},
+      "page": "lessons/01-capitalist-transformations-19c.html"
+    },
+    {
+      "number": 2,
+      "slug": "imperialist-rivalry-ww1",
+      "title": "التنافس الإمبريالي واندلاع الحرب العالمية الأولى",
+      "period": "1871م–1918م",
+      "doc": "الدرس 2: التنافس الإمبريالي (مفصل)",
+      "notion": "https://app.notion.com/p/3a4cf32c8d3881698b0dee27314a546e",
+      "source": "https://docs.google.com/document/d/17iZJ86W06FAPlbvSG_gFyxn-tLnVOhhI6mmfh72zygo",
+      "summary": "التنافس الاقتصادي والسياسي، الأحلاف، السباق نحو التسلح، الأزمات الدولية ومراحل الحرب العالمية الأولى.",
+      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-02-imperialist-rivalry.webp", "previewEmbedded": true},
+      "page": "lessons/02-imperialist-rivalry-ww1.html"
+    },
+    {
+      "number": 3,
+      "slug": "arab-intellectual-awakening",
+      "title": "اليقظة الفكرية في المشرق العربي خلال القرن 19م",
+      "period": "القرن 19م",
+      "doc": "الدرس 3: اليقظة الفكرية (مفصل)",
+      "notion": "https://app.notion.com/p/3a1cf32c8d38816c980cd09daa6f7ef4",
+      "source": "https://docs.google.com/document/d/19cEbKsyZX2h40A6Q819EnWwYuSbXc2dIiL0TNKM2AdE",
+      "summary": "مظاهر وعوامل النهضة العربية، تياراتها الإصلاحية والليبرالية، روادها ونتائجها.",
+      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-03-intellectual-awakening.webp", "previewEmbedded": true},
+      "page": "lessons/03-arab-intellectual-awakening.html"
+    },
+    {
+      "number": 4,
+      "slug": "colonial-pressures-morocco",
+      "title": "الضغوط الاستعمارية على المغرب ومحاولات الإصلاح خلال القرن 19م",
+      "period": "1844م–1912م",
+      "doc": "الدرس 4: الضغوط الاستعمارية على المغرب (مفصل)",
+      "notion": "https://app.notion.com/p/3a1cf32c8d3881bfaf2dfe629cb44654",
+      "source": "https://docs.google.com/document/d/1qrkWR1E4fABlOjgub6eHWtABA30X86K05yhV_xZbTy0",
+      "summary": "الضغوط العسكرية والتجارية والدبلوماسية، محاولات الإصلاح المغربية، عوامل فشلها ونتائجها.",
+      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-04-colonial-pressures.webp", "previewEmbedded": true},
+      "page": "lessons/04-colonial-pressures-morocco.html"
+    },
+    {
+      "number": 5,
+      "slug": "europe-ww1-to-1929",
+      "title": "أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929م",
+      "period": "1918م–1929م",
+      "doc": "الدرس 5: أوروبا بعد الحرب العالمية 1 (مفصل)",
+      "notion": "https://app.notion.com/p/3a1cf32c8d3881ad8307f8d16cf9e614",
+      "source": "https://docs.google.com/document/d/1RNm3dVhypvliWBFuLqIMWzKhZwzmWfDbri3od_W4F8Q",
+      "summary": "حصيلة الحرب ومعاهدات الصلح والتحولات السياسية، ثم أسباب أزمة 1929 وانتشارها ونتائجها.",
+      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-05-europe-1929.webp", "previewEmbedded": true},
+      "page": "lessons/05-europe-ww1-to-1929.html"
+    },
+    {
+      "number": 6,
+      "slug": "world-war-two",
+      "title": "الحرب العالمية الثانية: الأسباب والمراحل والنتائج",
+      "period": "1939م–1945م",
+      "doc": "الدرس 6: الحرب العالمية الثانية (مفصل)",
+      "notion": "https://app.notion.com/p/3a1cf32c8d3881769a49e0b185a12f11",
+      "source": "https://docs.google.com/document/d/16hYVxs3n3E7H3VFDVeoZBB5pVK2Dvu1l1hY8NxcnCUA",
+      "summary": "الأسباب المباشرة وغير المباشرة، المراحل الكبرى، والخسائر والتحولات الدولية بعد سنة 1945.",
+      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-06-world-war-two.webp", "previewEmbedded": true},
+      "page": "lessons/06-world-war-two.html"
+    }
+  ]
+}
