@@ -1,0 +1,80 @@
+name: Monitor Aloula site
+
+on:
+  schedule:
+    - cron: '5 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/monitor-aloula.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Probe live URLs
+        id: probe
+        shell: bash
+        run: |
+          set +e
+          urls=(
+            'https://aloula.hanane.today/'
+            'https://hanane.today/rihlat-aloula-bac/'
+          )
+          overall=up
+          details=''
+          for url in "${urls[@]}"; do
+            code='000'; match=no
+            for attempt in $(seq 1 6); do
+              code=$(curl -L -sS --connect-timeout 8 --max-time 20 -o /tmp/live.html -w '%{http_code}' "$url")
+              grep -q 'رحلة الأولى باك' /tmp/live.html 2>/dev/null && match=yes || match=no
+              [ "$code" = '200' ] && [ "$match" = 'yes' ] && break
+              sleep 10
+            done
+            if [ "$code" != '200' ] || [ "$match" != 'yes' ]; then
+              overall=down
+            fi
+            details="${details}${url} | http=${code} | match=${match}\n"
+          done
+          checked_at=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          mkdir -p .deployment-status
+          {
+            printf '{\n'
+            printf '  "status": "%s",\n' "$overall"
+            printf '  "checked_at": "%s",\n' "$checked_at"
+            printf '  "urls": [\n'
+            printf '    "https://aloula.hanane.today/",\n'
+            printf '    "https://hanane.today/rihlat-aloula-bac/"\n'
+            printf '  ]\n'
+            printf '}\n'
+          } > .deployment-status/aloula-monitor.json
+          printf "$details" > .deployment-status/aloula-monitor.txt
+          printf '%s\n' "$checked_at" >> .deployment-status/aloula-monitor.txt
+          echo "overall=$overall" >> "$GITHUB_OUTPUT"
+          echo "$overall — $checked_at"
+          printf "$details"
+
+      - name: Save monitor result
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/aloula-monitor.json .deployment-status/aloula-monitor.txt
+          git diff --cached --quiet || git commit -m 'Monitor aloula.hanane.today status'
+          git push origin main || true
+
+      - name: Fail run if site is down
+        if: steps.probe.outputs.overall != 'up'
+        shell: bash
+        run: |
+          echo '::error::موقع رحلة الأولى باك يبدو متوقفًا — راجع .deployment-status/aloula-monitor.txt'
+          exit 1
