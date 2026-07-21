@@ -1,0 +1,9 @@
+checked_at=2026-07-21T11:05:59Z
+repository_head=1deede524b79e5ce194851d9ab9b74a88f764935
+--- NETLIFY SITE ---
+{"id":"99605edb-90bc-4efd-9901-c076e81a67ad","name":"hanane-edu","custom_domain":"hanane.today","url":"https://hanane.today","ssl_url":"https://hanane.today","admin_url":"https://app.netlify.com/projects/hanane-edu","account_slug":"ahmedbouamoud","account_name":"ecole al hanane","repo_url":"https://github.com/AhmedBouamoud/mdrsti-new","build_settings":{},"deploy_id":"6a5f5276abf4e200083e4fa8","published_deploy":{"id":"6a5f5276abf4e200083e4fa8","site_id":"99605edb-90bc-4efd-9901-c076e81a67ad","build_id":"6a5f5276abf4e200083e4fa6","state":"ready","name":"hanane-edu","url":"https://hanane.today","admin_url":"https://app.netlify.com/projects/hanane-edu","deploy_url":"http://main--hanane-edu.netlify.app","deploy_ssl_url":"https://main--hanane-edu.netlify.app","created_at":"2026-07-21T11:05:26.646Z","updated_at":"2026-07-21T11:05:40.058Z","commit_ref":"1deede524b79e5ce194851d9ab9b74a88f764935","review_id":null,"skipped":null,"locked":null,"branch":"main","commit_url":"https://github.com/AhmedBouamoud/mdrsti-new/commit/1deede524b79e5ce194851d9ab9b74a88f764935","title":"Add production verification for Aloula 2.0","review_url":null,"published_at":"2026-07-21T11:05:34.340Z","context":"production","deploy_time":6,"public":true,"plugin_state":"none"},"public":true,"screenshot_url":"https://d33wubrfki0l68.cloudfront.net/6a5f5276abf4e200083e4fa8/screenshot_2026-07-21-11-05-36-0000.webp"}
+--- LIVE VERSION ---
+نسخة المحتوى 2.0
+--- LIVE FEATURES ---
+إنفوغرافيات مدمجة
+تم التحيين

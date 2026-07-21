@@ -1,0 +1,52 @@
+name: Verify Aloula production deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-aloula-production.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for Netlify and capture production state
+        shell: bash
+        run: |
+          set -euo pipefail
+          sleep 25
+          mkdir -p .deployment-status
+          {
+            echo 'checked_at='$(date -u +%FT%TZ)
+            echo 'repository_head='$(git rev-parse HEAD)
+            echo '--- NETLIFY SITE ---'
+            curl -sS --max-time 30 \
+              'https://api.netlify.com/api/v1/sites/aloula.hanane.today' || true
+            echo
+            echo '--- LIVE VERSION ---'
+            curl -sSL --max-time 30 'https://aloula.hanane.today/' \
+              | grep -Eo 'نسخة (المعاينة الأولى 0\.1|المحتوى 2\.0)' \
+              | head -1 || true
+            echo '--- LIVE FEATURES ---'
+            curl -sSL --max-time 30 'https://aloula.hanane.today/' \
+              | grep -Eo 'تم التحيين|lessons-v2\.html|إنفوغرافيات مدمجة' \
+              | sort -u || true
+          } > .deployment-status/aloula-production-verification.txt
+
+      - name: Save verification
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/aloula-production-verification.txt
+          git diff --cached --quiet || git commit -m 'Verify Aloula Netlify production deploy'
+          git push origin main
