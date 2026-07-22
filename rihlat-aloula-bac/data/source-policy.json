@@ -1,0 +1,10 @@
+{
+  "project": "رحلة الأولى باك",
+  "authority": "approved-site-lessons",
+  "protected": true,
+  "rule": "الدروس المحررة والمعتمدة داخل الموقع هي قاعدة المحتوى الرسمية. لا يجوز لأي مزامنة من Drive أو NotebookLM أو أي مستودع آخر حذفها أو استبدالها تلقائيا. المواد الجديدة تعامل كمصادر مرشحة، وتدخل مرحلة المراجعة ثم تدمج تحريريا بعد الاعتماد.",
+  "rawSourcesCanOverwrite": false,
+  "reviewRequired": true,
+  "backupBranch": "backup/aloula-before-restore-2026-07-22",
+  "restoredAt": "2026-07-22"
+}
