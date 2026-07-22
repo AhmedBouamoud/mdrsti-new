@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   restore:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout production repository
@@ -26,36 +25,23 @@ jobs:
           approved_commit='f89278347ead4389acf523aa631143a9a5a64a3c'
           rm -rf rihlat-aloula-bac
           git checkout "$approved_commit" -- rihlat-aloula-bac
-
           test -s rihlat-aloula-bac/index.html
           test -s rihlat-aloula-bac/assets/app.js
           test -s rihlat-aloula-bac/assets/styles.css
           test -s rihlat-aloula-bac/data/site.json
           test -s rihlat-aloula-bac/data/lessons.json
-          for n in 01 02 03 04 05 06 07 08; do
-            test -s "rihlat-aloula-bac/data/lessons/hist-$n.json"
-          done
-
+          for n in 01 02 03 04 05 06 07 08; do test -s "rihlat-aloula-bac/data/lessons/hist-$n.json"; done
           sed -i 's/النشر عبر Vercel/النشر عبر Netlify/g' rihlat-aloula-bac/index.html || true
           sed -i 's/rihla-1bac-v1/rihla-1bac-restored-v3/g' rihlat-aloula-bac/sw.js || true
+          printf '%s\n' '{' '  "project": "رحلة الأولى باك",' '  "authority": "approved-site-lessons",' '  "protected": true,' '  "rule": "لا تُستبدل الدروس المعتمدة تلقائيا بمصادر خام من Drive أو NotebookLM. المصادر الجديدة تدخل للمراجعة ثم تُدمج تحريريا.",' '  "restored_from_commit": "f89278347ead4389acf523aa631143a9a5a64a3c"' '}' > rihlat-aloula-bac/data/source-policy.json
 
-          cat > rihlat-aloula-bac/data/source-policy.json <<'JSON'
-          {
-            "project": "رحلة الأولى باك",
-            "authority": "approved-site-lessons",
-            "protected": true,
-            "rule": "لا تُستبدل الدروس المعتمدة تلقائيا بمصادر خام من Drive أو NotebookLM. المصادر الجديدة تدخل للمراجعة ثم تُدمج تحريريا.",
-            "restored_from_commit": "f89278347ead4389acf523aa631143a9a5a64a3c"
-          }
-          JSON
-
-      - name: Commit restored lesson base and remove one-time workflow
+      - name: Commit restored lesson base
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm .github/workflows/restore-aloula-approved-v1.yml
-          git add -A rihlat-aloula-bac .github/workflows/restore-aloula-approved-v1.yml
+          git add -A rihlat-aloula-bac
+          git diff --cached --quiet && exit 0
           git commit -m 'Restore approved First Bac lessons and original lesson design'
           git push origin main
