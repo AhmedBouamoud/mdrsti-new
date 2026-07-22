@@ -16,6 +16,7 @@
     <div class="top-actions"><button class="icon-btn" id="fontDown" title="تصغير الخط">أ−</button><button class="icon-btn" id="fontUp" title="تكبير الخط">أ+</button><button class="icon-btn" id="themeBtn" title="تغيير المظهر">◐</button></div>
   </header>
   <main id="main">
+    <div id="restoration-marker" style="margin:0 0 18px;padding:13px 16px;border:1px solid #c18b2d;border-radius:14px;background:#fff4d6;color:#5b3b00;font-weight:800;text-align:center">تمت استعادة النسخة المعتمدة — 8 دروس تاريخية كاملة — 22 يوليو 2026</div>
     <section class="hero">
       <div><span class="eyebrow">الاجتماعيات • السنة الأولى بكالوريا</span><h1>الدروس الكاملة في <em>رحلة واحدة واضحة</em></h1><p id="tagline">دروس قابلة للقراءة والمراجعة والطباعة، وبنية مرنة تسمح بإضافة الوثائق والخرائط والأنشطة لاحقاً.</p><div class="hero-actions"><button class="primary" id="continueBtn">تابع من آخر درس</button><button class="secondary" id="resetBtn">إعادة ضبط التقدم</button></div></div>
       <aside class="progress-card"><span>تقدمك في محور التاريخ</span><strong id="progressValue">0%</strong><div class="bar"><i id="progressBar"></i></div><small id="progressText">0 من 8 دروس</small></aside>
@@ -25,7 +26,7 @@
     <section id="lessonGrid" class="lesson-grid" aria-live="polite"></section>
     <section class="future"><div><span class="kicker">البنية القادمة</span><h2>الموقع جاهز للتوسع</h2><p>ستُضاف الجغرافيا والمنهجية والخرائط والوثائق والاختبارات داخل المجلدات نفسها، دون تغيير الواجهة الأساسية.</p></div><div class="future-grid"><article><b>🌍 الجغرافيا</b><span>فهرس مستقل وملفات محتوى منفصلة.</span></article><article><b>🗺️ الوثائق والخرائط</b><span>مكتبة مرتبطة بكل درس.</span></article><article><b>🧠 الأنشطة</b><span>اختبارات وخطوط زمنية وبطاقات مفاهيم.</span></article></div></section>
   </main>
-  <footer><strong id="footerAuthor">الأستاذ أحمد بوعمود</strong><span>نسخة مرنة قابلة للتطوير والنشر عبر Netlify</span></footer>
+  <footer><strong id="footerAuthor">الأستاذ أحمد بوعمود</strong><span>النسخة المعتمدة المستعادة 0.3 — النشر عبر Netlify</span></footer>
   <dialog id="lessonDialog"><div class="dialog-shell"><header class="dialog-head"><button id="closeLesson" class="icon-btn close" aria-label="إغلاق">✕</button><div><span id="lessonBadge" class="lesson-badge"></span><h2 id="lessonTitle"></h2></div><div class="dialog-actions"><button id="printLesson" class="icon-btn" title="طباعة">🖨</button><button id="toggleDone" class="done-btn">أتممت الدرس</button></div></header><div class="lesson-layout"><aside id="lessonToc" class="toc"></aside><article id="lessonContent" class="lesson-content"></article></div></div></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="./assets/app.js"></script>
