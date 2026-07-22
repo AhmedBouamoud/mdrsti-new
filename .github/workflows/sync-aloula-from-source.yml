@@ -1,18 +1,13 @@
-name: Sync Aloula production content
+name: Review Aloula source differences
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/sync-aloula-from-source.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  sync:
-    if: github.actor != 'github-actions[bot]'
+  review:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout production repository
@@ -20,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch approved Aloula source
+      - name: Fetch candidate source without publishing
         shell: bash
         run: |
           set -euo pipefail
@@ -28,30 +23,12 @@ jobs:
           git clone --depth 1 --branch main \
             https://github.com/AhmedBouamoud/Mdrsti.git \
             /tmp/aloula-source
-          test -s /tmp/aloula-source/rihlat-aloula-bac/index.html
-          test -s /tmp/aloula-source/rihlat-aloula-bac/lessons-v2.html
-          test -s /tmp/aloula-source/rihlat-aloula-bac/data/lessons.json
+          test -d /tmp/aloula-source/rihlat-aloula-bac
 
-      - name: Install production content
+      - name: Compare protected production content
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf rihlat-aloula-bac
-          cp -R /tmp/aloula-source/rihlat-aloula-bac ./rihlat-aloula-bac
-          grep -q 'نسخة المحتوى 2.0' rihlat-aloula-bac/index.html
-          grep -q 'ALOULA-HIS-06' rihlat-aloula-bac/lessons-v2.html
-          grep -q 'infographic-6' rihlat-aloula-bac/lessons-v2.html
-
-      - name: Commit and publish
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A rihlat-aloula-bac
-          if git diff --cached --quiet; then
-            echo 'Aloula production content is already current.'
-          else
-            git commit -m 'Publish Aloula lessons, database links, and infographics 2.0'
-            git push origin main
-          fi
+          echo 'This workflow is review-only. It never deletes or overwrites production lessons.'
+          diff -qr rihlat-aloula-bac /tmp/aloula-source/rihlat-aloula-bac || true
+          echo 'Protected files include index.html, assets/app.js, assets/styles.css, data/site.json, data/lessons.json, and data/lessons/*.json.'
