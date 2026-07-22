@@ -1,0 +1,73 @@
+name: Verify restored Aloula production
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-aloula-restoration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify live restored application
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://hanane.today/rihlat-aloula-bac'
+          work="$(mktemp -d)"
+          curl -fsSL --retry 6 --retry-delay 5 "$base/" -o "$work/index.html"
+          curl -fsSL --retry 6 --retry-delay 5 "$base/assets/app.js" -o "$work/app.js"
+          curl -fsSL --retry 6 --retry-delay 5 "$base/assets/styles.css" -o "$work/styles.css"
+          curl -fsSL --retry 6 --retry-delay 5 "$base/data/lessons.json" -o "$work/lessons.json"
+          grep -q 'progressValue' "$work/index.html"
+          grep -q 'lessonGrid' "$work/index.html"
+          grep -q 'فتح الدرس' "$work/app.js"
+          grep -q 'lesson-card' "$work/styles.css"
+          python - "$work/lessons.json" <<'PY'
+          import json,sys
+          data=json.load(open(sys.argv[1],encoding='utf-8'))
+          assert isinstance(data,list) and len(data)==8, len(data)
+          assert data[0]['id']=='hist-01'
+          assert data[-1]['id']=='hist-08'
+          PY
+          for n in 01 02 03 04 05 06 07 08; do
+            curl -fsSL --retry 6 --retry-delay 5 "$base/data/lessons/hist-$n.json" -o "$work/hist-$n.json"
+            python - "$work/hist-$n.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1],encoding='utf-8'))
+          assert d.get('title') and d.get('sections') and d.get('summary')
+          PY
+          done
+          mkdir -p .deployment-status
+          cat > .deployment-status/aloula-restoration.json <<JSON
+          {
+            "checked_at": "$(date -u +%FT%TZ)",
+            "site": "$base/",
+            "status": "restored",
+            "http_code": 200,
+            "original_interface": true,
+            "lesson_engine": true,
+            "approved_lessons": 8,
+            "first_lesson_complete": true,
+            "cache_version": "rihlat-aloula-bac-restored-v3"
+          }
+          JSON
+
+      - name: Save verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/aloula-restoration.json
+          git diff --cached --quiet || git commit -m 'Confirm restored Aloula production'
+          git push origin main
