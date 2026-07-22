@@ -1,78 +1,98 @@
-{
-  "version": 2,
-  "updatedAt": "2026-07-21",
-  "lessons": [
-    {
-      "number": 1,
-      "slug": "capitalist-transformations-19c",
-      "title": "التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم الرأسمالي خلال القرن 19م",
-      "period": "القرن 19م",
-      "doc": "الدرس 1: التحولات الاقتصادية والمالية (مفصل)",
-      "notion": "https://app.notion.com/p/3a1cf32c8d388154a290cd68488323a9",
-      "source": "https://docs.google.com/document/d/1djlThYAgMzTtvZW_TFAmUr9oH2a3c4zACOTkcxRkcMI",
-      "summary": "تحولات الصناعة والفلاحة والتجارة والمال والمجتمع والفكر، وانتقال الرأسمالية نحو مرحلتها المالية.",
-      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-01-capitalist-transformations.webp", "previewEmbedded": true},
-      "page": "lessons/01-capitalist-transformations-19c.html"
-    },
-    {
-      "number": 2,
-      "slug": "imperialist-rivalry-ww1",
-      "title": "التنافس الإمبريالي واندلاع الحرب العالمية الأولى",
-      "period": "1871م–1918م",
-      "doc": "الدرس 2: التنافس الإمبريالي (مفصل)",
-      "notion": "https://app.notion.com/p/3a4cf32c8d3881698b0dee27314a546e",
-      "source": "https://docs.google.com/document/d/17iZJ86W06FAPlbvSG_gFyxn-tLnVOhhI6mmfh72zygo",
-      "summary": "التنافس الاقتصادي والسياسي، الأحلاف، السباق نحو التسلح، الأزمات الدولية ومراحل الحرب العالمية الأولى.",
-      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-02-imperialist-rivalry.webp", "previewEmbedded": true},
-      "page": "lessons/02-imperialist-rivalry-ww1.html"
-    },
-    {
-      "number": 3,
-      "slug": "arab-intellectual-awakening",
-      "title": "اليقظة الفكرية في المشرق العربي خلال القرن 19م",
-      "period": "القرن 19م",
-      "doc": "الدرس 3: اليقظة الفكرية (مفصل)",
-      "notion": "https://app.notion.com/p/3a1cf32c8d38816c980cd09daa6f7ef4",
-      "source": "https://docs.google.com/document/d/19cEbKsyZX2h40A6Q819EnWwYuSbXc2dIiL0TNKM2AdE",
-      "summary": "مظاهر وعوامل النهضة العربية، تياراتها الإصلاحية والليبرالية، روادها ونتائجها.",
-      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-03-intellectual-awakening.webp", "previewEmbedded": true},
-      "page": "lessons/03-arab-intellectual-awakening.html"
-    },
-    {
-      "number": 4,
-      "slug": "colonial-pressures-morocco",
-      "title": "الضغوط الاستعمارية على المغرب ومحاولات الإصلاح خلال القرن 19م",
-      "period": "1844م–1912م",
-      "doc": "الدرس 4: الضغوط الاستعمارية على المغرب (مفصل)",
-      "notion": "https://app.notion.com/p/3a1cf32c8d3881bfaf2dfe629cb44654",
-      "source": "https://docs.google.com/document/d/1qrkWR1E4fABlOjgub6eHWtABA30X86K05yhV_xZbTy0",
-      "summary": "الضغوط العسكرية والتجارية والدبلوماسية، محاولات الإصلاح المغربية، عوامل فشلها ونتائجها.",
-      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-04-colonial-pressures.webp", "previewEmbedded": true},
-      "page": "lessons/04-colonial-pressures-morocco.html"
-    },
-    {
-      "number": 5,
-      "slug": "europe-ww1-to-1929",
-      "title": "أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929م",
-      "period": "1918م–1929م",
-      "doc": "الدرس 5: أوروبا بعد الحرب العالمية 1 (مفصل)",
-      "notion": "https://app.notion.com/p/3a1cf32c8d3881ad8307f8d16cf9e614",
-      "source": "https://docs.google.com/document/d/1RNm3dVhypvliWBFuLqIMWzKhZwzmWfDbri3od_W4F8Q",
-      "summary": "حصيلة الحرب ومعاهدات الصلح والتحولات السياسية، ثم أسباب أزمة 1929 وانتشارها ونتائجها.",
-      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-05-europe-1929.webp", "previewEmbedded": true},
-      "page": "lessons/05-europe-ww1-to-1929.html"
-    },
-    {
-      "number": 6,
-      "slug": "world-war-two",
-      "title": "الحرب العالمية الثانية: الأسباب والمراحل والنتائج",
-      "period": "1939م–1945م",
-      "doc": "الدرس 6: الحرب العالمية الثانية (مفصل)",
-      "notion": "https://app.notion.com/p/3a1cf32c8d3881769a49e0b185a12f11",
-      "source": "https://docs.google.com/document/d/16hYVxs3n3E7H3VFDVeoZBB5pVK2Dvu1l1hY8NxcnCUA",
-      "summary": "الأسباب المباشرة وغير المباشرة، المراحل الكبرى، والخسائر والتحولات الدولية بعد سنة 1945.",
-      "infographic": {"bookletDriveId": "1QvVnNpMM-CimQVkwkckKDQR3d2Rc0VAF", "fileName": "lesson-06-world-war-two.webp", "previewEmbedded": true},
-      "page": "lessons/06-world-war-two.html"
-    }
-  ]
-}
+[
+  {
+    "id": "hist-01",
+    "slug": "capitalist-transformations",
+    "number": 1,
+    "subject": "history",
+    "title": "التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم الرأسمالي خلال القرن 19م",
+    "period": "القرن 19م",
+    "status": "published",
+    "duration": "35 دقيقة",
+    "keywords": ["الرأسمالية", "الثورة الصناعية", "البرجوازية", "الطبقة العاملة", "البنوك", "المواصلات"],
+    "content": "data/lessons/hist-01.json"
+  },
+  {
+    "id": "hist-02",
+    "slug": "imperial-rivalry-ww1",
+    "number": 2,
+    "subject": "history",
+    "title": "التنافس الإمبريالي واندلاع الحرب العالمية الأولى",
+    "period": "1873–1919م",
+    "status": "published",
+    "duration": "35 دقيقة",
+    "keywords": ["الإمبريالية", "التحالف الثلاثي", "الوفاق الثلاثي", "سراييفو", "الحرب العالمية الأولى"],
+    "content": "data/lessons/hist-02.json"
+  },
+  {
+    "id": "hist-03",
+    "slug": "arab-awakening",
+    "number": 3,
+    "subject": "history",
+    "title": "اليقظة الفكرية في المشرق العربي",
+    "period": "القرن 19م",
+    "status": "published",
+    "duration": "30 دقيقة",
+    "keywords": ["النهضة", "المطابع", "الترجمة", "الطهطاوي", "محمد عبده", "القومية العربية"],
+    "content": "data/lessons/hist-03.json"
+  },
+  {
+    "id": "hist-04",
+    "slug": "colonial-pressure-morocco",
+    "number": 4,
+    "subject": "history",
+    "title": "الضغوط الاستعمارية على المغرب ومحاولات الإصلاح خلال القرن 19م",
+    "period": "1844–1880م وما بعدها",
+    "status": "published",
+    "duration": "35 دقيقة",
+    "keywords": ["إيسلي", "تطوان", "اتفاقية 1856", "مؤتمر مدريد", "الإصلاحات"],
+    "content": "data/lessons/hist-04.json"
+  },
+  {
+    "id": "hist-05",
+    "slug": "europe-after-ww1-1929",
+    "number": 5,
+    "subject": "history",
+    "title": "أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929",
+    "period": "1918–1929م",
+    "status": "review",
+    "duration": "35 دقيقة",
+    "keywords": ["مؤتمر السلام", "فرساي", "الثورة الروسية", "الفاشية", "النازية", "أزمة 1929"],
+    "content": "data/lessons/hist-05.json"
+  },
+  {
+    "id": "hist-06",
+    "slug": "world-war-two",
+    "number": 6,
+    "subject": "history",
+    "title": "الحرب العالمية الثانية: الأسباب والنتائج",
+    "period": "1939–1945م",
+    "status": "published",
+    "duration": "40 دقيقة",
+    "keywords": ["فرساي", "النازية", "المحور", "الحلفاء", "ستالينغراد", "الأمم المتحدة"],
+    "content": "data/lessons/hist-06.json"
+  },
+  {
+    "id": "hist-07",
+    "slug": "protectorate-exploitation",
+    "number": 7,
+    "subject": "history",
+    "title": "نظام الحماية بالمغرب والاستغلال الاستعماري",
+    "period": "1912–1956م",
+    "status": "published",
+    "duration": "35 دقيقة",
+    "keywords": ["الحماية", "المقيم العام", "الاستغلال الفلاحي", "الصناعة", "الهجرة القروية"],
+    "content": "data/lessons/hist-07.json"
+  },
+  {
+    "id": "hist-08",
+    "slug": "independence-territorial-unity",
+    "number": 8,
+    "subject": "history",
+    "title": "نضال المغرب من أجل الاستقلال واستكمال الوحدة الترابية",
+    "period": "1912–1979م",
+    "status": "published",
+    "duration": "40 دقيقة",
+    "keywords": ["المقاومة المسلحة", "الحركة الوطنية", "وثيقة الاستقلال", "ثورة الملك والشعب", "المسيرة الخضراء"],
+    "content": "data/lessons/hist-08.json"
+  }
+]
