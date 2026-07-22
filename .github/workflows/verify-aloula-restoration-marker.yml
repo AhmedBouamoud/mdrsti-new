@@ -1,0 +1,54 @@
+name: Verify Aloula restoration marker
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-aloula-restoration-marker.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for Netlify and verify the live marker
+        shell: bash
+        run: |
+          set -euo pipefail
+          target='https://aloula.hanane.today/'
+          marker='تمت استعادة النسخة المعتمدة — 8 دروس تاريخية كاملة'
+          ok=no
+          http=000
+          for i in $(seq 1 12); do
+            body=$(mktemp)
+            http=$(curl -sSL --max-time 30 -o "$body" -w '%{http_code}' "$target" || true)
+            if [ "$http" = '200' ] && grep -Fq "$marker" "$body"; then
+              ok=yes
+              break
+            fi
+            sleep 15
+          done
+          mkdir -p .deployment-status
+          cat > .deployment-status/aloula-restoration-live.json <<JSON
+          {
+            "checked_at": "$(date -u +%FT%TZ)",
+            "url": "$target",
+            "http_code": $http,
+            "restoration_marker": "$ok",
+            "marker": "$marker"
+          }
+          JSON
+          test "$ok" = yes
+      - name: Save live result
+        if: always()
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .deployment-status/aloula-restoration-live.json
+          git diff --cached --quiet || git commit -m 'Record verified Aloula restoration marker'
+          git push origin main
