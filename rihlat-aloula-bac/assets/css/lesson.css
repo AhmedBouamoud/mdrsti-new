@@ -72,6 +72,15 @@ tbody tr:nth-child(even) td{ background:#f7fafd; }
 .card .cap{ color:#fff; font-weight:800; font-family:Tahoma,sans-serif; padding:9px 14px; display:flex; align-items:center; gap:8px; font-size:.95rem; }
 .card .cap .e{ font-size:1.15rem; }
 .card .bd{ padding:12px 15px; font-size:.93rem; text-align:justify; }
+.card .bd ul{ margin:0; padding-right:18px; }
+.card .bd li{ margin:4px 0; }
+
+.infographics{ display:grid; gap:18px; margin:14px 0; }
+.info-fig{ margin:0; background:#f5f8fb; border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:var(--card-sh); }
+.info-fig img{ display:block; width:100%; height:auto; }
+.info-fig figcaption{ padding:10px 14px; font-family:Tahoma,sans-serif; font-size:.82rem; color:var(--muted); }
+.info-fig figcaption a{ color:var(--orange); font-weight:700; text-decoration:none; }
+.info-fig figcaption a:hover{ text-decoration:underline; }
 .c-blue .cap{ background:var(--blue); } .c-green .cap{ background:var(--green); } .c-amber .cap{ background:var(--amber); }
 .c-purple .cap{ background:var(--purple); } .c-teal .cap{ background:var(--teal); } .c-red .cap{ background:var(--red); }
 
