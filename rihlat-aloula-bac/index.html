@@ -16,23 +16,73 @@
     <div class="top-actions"><button class="icon-btn" id="fontDown" title="تصغير الخط">أ−</button><button class="icon-btn" id="fontUp" title="تكبير الخط">أ+</button><button class="icon-btn" id="themeBtn" title="تغيير المظهر">◐</button></div>
   </header>
   <main id="main">
-    <div id="restoration-marker" style="margin:0 0 18px;padding:13px 16px;border:1px solid #c18b2d;border-radius:14px;background:#fff4d6;color:#5b3b00;font-weight:800;text-align:center">تمت استعادة النسخة المعتمدة — 8 دروس تاريخية كاملة — 22 يوليو 2026</div>
     <section class="hero">
       <div><span class="eyebrow">الاجتماعيات • السنة الأولى بكالوريا</span><h1>الدروس الكاملة في <em>رحلة واحدة واضحة</em></h1><p id="tagline">دروس قابلة للقراءة والمراجعة والطباعة، وبنية مرنة تسمح بإضافة الوثائق والخرائط والأنشطة لاحقاً.</p><div class="hero-actions"><button class="primary" id="continueBtn">تابع من آخر درس</button><button class="secondary" id="resetBtn">إعادة ضبط التقدم</button></div></div>
-      <aside class="progress-card"><span>تقدمك في محور التاريخ</span><strong id="progressValue">0%</strong><div class="bar"><i id="progressBar"></i></div><small id="progressText">0 من 8 دروس</small></aside>
+      <aside class="progress-card"><span>تقدمك في محور التاريخ</span><strong id="progressValue">0%</strong><div class="bar"><i id="progressBar"></i></div><small id="progressText">0 من 9 دروس</small></aside>
     </section>
-    <section aria-label="الدرس المعتمد" style="margin:18px 0">
-      <a href="lessons/tahawwulat-kubra.html" style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;text-decoration:none;background:linear-gradient(135deg,#12294a,#1c4a6e);color:#fff;border-radius:16px;padding:20px 24px;border-right:7px solid #e8820e;box-shadow:0 14px 34px rgba(16,42,67,.18)">
-        <span style="display:flex;flex-direction:column;gap:6px">
-          <span style="font-family:Tahoma,sans-serif;font-size:.8rem;color:#e8820e;font-weight:800">الدرس الأول · التقديم العام · درس كامل معتمد</span>
-          <span style="font-size:1.15rem;font-weight:800;line-height:1.6">التحولات الكبرى بالعالم الرأسمالي وانعكاساتها خلال القرنين 19 و20م</span>
-        </span>
-        <span style="background:#e8820e;color:#fff;font-family:Tahoma,sans-serif;font-weight:800;padding:10px 18px;border-radius:10px;white-space:nowrap">افتح الدرس ←</span>
+    <section aria-label="دروس التاريخ" style="margin:20px 0">
+      <style>
+        .lp-head{display:flex;align-items:baseline;gap:12px;margin:6px 2px 14px}
+        .lp-head b{color:#12294a;font-size:1.3rem}
+        .lp-head span{color:#e8820e;font-weight:800;font-family:Tahoma,sans-serif;font-size:.8rem}
+        .lp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+        .lp-card{display:flex;flex-direction:column;gap:10px;text-decoration:none;background:#fff;border:1px solid #dce4ee;border-right:6px solid #12294a;border-radius:14px;padding:16px 18px;box-shadow:0 6px 18px rgba(18,41,74,.07);transition:.18s}
+        .lp-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(18,41,74,.14);border-right-color:#e8820e}
+        .lp-num{font-family:Tahoma,sans-serif;font-size:.75rem;font-weight:800;color:#e8820e}
+        .lp-title{color:#12294a;font-weight:800;line-height:1.6;font-size:1.02rem;flex:1}
+        .lp-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eef1f5;padding-top:10px}
+        .lp-badge{font-family:Tahoma,sans-serif;font-size:.72rem;color:#5d6f83}
+        .lp-open{font-family:Tahoma,sans-serif;font-weight:800;color:#e8820e;font-size:.85rem}
+      </style>
+      <div class="lp-head"><b>دروس التاريخ — السنة الأولى بكالوريا</b><span>9 دروس كاملة</span></div>
+      <div class="lp-grid">
+      <a class="lp-card" href="lessons/tahawwulat-kubra.html">
+        <span class="lp-num">الدرس 1</span>
+        <span class="lp-title">التحولات الكبرى بالعالم الرأسمالي وانعكاساتها خلال القرنين 19 و20م</span>
+        <span class="lp-foot"><span class="lp-badge">📖 درس</span><span class="lp-open">افتح ←</span></span>
       </a>
+      <a class="lp-card" href="lessons/tahawwulat-iqtisadiya.html">
+        <span class="lp-num">الدرس 2</span>
+        <span class="lp-title">التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم الرأسمالي خلال القرن 19م</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/tanafus-imbiriyali.html">
+        <span class="lp-num">الدرس 3</span>
+        <span class="lp-title">التنافس الإمبريالي واندلاع الحرب العالمية الأولى</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/yaqada-fikriya.html">
+        <span class="lp-num">الدرس 4</span>
+        <span class="lp-title">اليقظة الفكرية في المشرق العربي خلال القرن 19م</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/dughut-istiimariya.html">
+        <span class="lp-num">الدرس 5</span>
+        <span class="lp-title">الضغوط الاستعمارية على المغرب ومحاولات الإصلاح خلال القرن 19م</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/urubba-bayna-harbayn.html">
+        <span class="lp-num">الدرس 6</span>
+        <span class="lp-title">أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929م</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/harb-alamiya-thaniya.html">
+        <span class="lp-num">الدرس 7</span>
+        <span class="lp-title">الحرب العالمية الثانية: الأسباب والمراحل والنتائج</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/nidham-himaya.html">
+        <span class="lp-num">الدرس 8</span>
+        <span class="lp-title">نظام الحماية بالمغرب والاستغلال الاستعماري</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      <a class="lp-card" href="lessons/nidal-maghrib.html">
+        <span class="lp-num">الدرس 9</span>
+        <span class="lp-title">نضال المغرب من أجل تحقيق الاستقلال واستكمال الوحدة الترابية</span>
+        <span class="lp-foot"><span class="lp-badge">📊 إنفوغرافيا</span><span class="lp-open">افتح ←</span></span>
+      </a>
+      </div>
     </section>
-    <section class="toolbar" aria-label="أدوات الدروس"><label class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث عن درس، مفهوم أو تاريخ..." autocomplete="off"></label><select id="statusFilter" aria-label="تصفية الحالة"><option value="all">كل الدروس</option><option value="published">منشور</option><option value="review">قيد المراجعة</option></select></section>
-    <section class="section-head"><div><span class="kicker">محور التاريخ</span><h2>دروس المقرر</h2></div><span id="resultsCount" class="count"></span></section>
-    <section id="lessonGrid" class="lesson-grid" aria-live="polite"></section>
     <section class="future"><div><span class="kicker">البنية القادمة</span><h2>الموقع جاهز للتوسع</h2><p>ستُضاف الجغرافيا والمنهجية والخرائط والوثائق والاختبارات داخل المجلدات نفسها، دون تغيير الواجهة الأساسية.</p></div><div class="future-grid"><article><b>🌍 الجغرافيا</b><span>فهرس مستقل وملفات محتوى منفصلة.</span></article><article><b>🗺️ الوثائق والخرائط</b><span>مكتبة مرتبطة بكل درس.</span></article><article><b>🧠 الأنشطة</b><span>اختبارات وخطوط زمنية وبطاقات مفاهيم.</span></article></div></section>
   </main>
   <footer><strong id="footerAuthor">الأستاذ أحمد بوعمود</strong><span>النسخة المعتمدة المستعادة 0.3 — النشر عبر Netlify</span></footer>
