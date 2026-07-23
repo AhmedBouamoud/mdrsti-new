@@ -1,3 +1,4 @@
 https://aloula.hanane.today/ | http=200 | match=yes
 https://hanane.today/rihlat-aloula-bac/ | http=200 | match=yes
-2026-07-23T00:10:14Z
+https://aloula.hanane.today/lessons/tahawwulat-kubra.html | http=200 | match=yes
+2026-07-23T00:29:34Z
