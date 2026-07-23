@@ -32,6 +32,7 @@ jobs:
             'https://hanane.today/rihlat-aloula-bac/'
             'https://aloula.hanane.today/lessons/tahawwulat-kubra.html'
             'https://aloula.hanane.today/lessons/nidal-maghrib.html'
+            'https://aloula.hanane.today/lessons/geo-sin.html'
           )
           overall=up
           details=''
