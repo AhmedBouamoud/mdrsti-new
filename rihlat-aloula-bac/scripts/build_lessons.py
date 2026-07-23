@@ -44,18 +44,50 @@ def render_table(sec):
     return out
 
 def render_cards(sec):
-    out = f'<div class="banner">{e(sec["title"])}</div><div class="cards">'
+    out = f'<div class="banner">{e(sec["title"])}</div>'
+    if sec.get("lead"):
+        out += f'<p class="lead">{e(sec["lead"])}</p>'
+    out += '<div class="cards">'
     for c in sec["cards"]:
         emoji = f'<span class="e">{c["emoji"]}</span> ' if c.get("emoji") else ""
+        if c.get("bullets"):
+            body = "<ul>" + "".join(f"<li>{e(b)}</li>" for b in c["bullets"]) + "</ul>"
+        else:
+            body = e(c.get("body", ""))
         out += (f'<div class="card c-{e(c["color"])}"><div class="cap">{emoji}{e(c["cap"])}</div>'
-                f'<div class="bd">{e(c["body"])}</div></div>')
+                f'<div class="bd">{body}</div></div>')
     return out + "</div>"
 
 def render_questions(sec):
     items = "".join(f"<li>{e(q)}</li>" for q in sec["items"])
     return f'<div class="banner">{e(sec["title"])}</div><ul class="questions">{items}</ul>'
 
-RENDERERS = {"table": render_table, "cards": render_cards, "questions": render_questions}
+def render_text(sec):
+    out = f'<div class="banner">{e(sec["title"])}</div>'
+    for p in sec.get("paragraphs", []):
+        out += f'<p class="lead">{e(p)}</p>'
+    if sec.get("note"):
+        n = sec["note"]
+        out += render_note(n.get("type", "method"), n["label"], n["text"], n.get("icon", "🧭"))
+    return out
+
+def render_application(sec):
+    return (f'<div class="banner">{e(sec["title"])}</div>'
+            + render_note("problem", sec.get("label", "تطبيق منهجي"), sec["task"], "📝"))
+
+def render_infographic(sec):
+    out = f'<div class="banner">{e(sec["title"])}</div>'
+    if sec.get("lead"):
+        out += f'<p class="lead">{e(sec["lead"])}</p>'
+    out += '<div class="infographics">'
+    for img in sec["images"]:
+        out += (f'<figure class="info-fig"><img src="{e(img["src"])}" alt="{e(img["alt"])}" loading="lazy">'
+                f'<figcaption>{e(img["caption"])} · '
+                f'<a href="{e(img["src"])}" download>تحميل الصورة ⤓</a></figcaption></figure>')
+    return out + "</div>"
+
+RENDERERS = {"table": render_table, "cards": render_cards, "questions": render_questions,
+             "text": render_text, "application": render_application, "infographic": render_infographic}
 
 def build_lesson(data):
     m = data["meta"]
