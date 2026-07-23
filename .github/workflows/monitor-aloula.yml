@@ -30,6 +30,7 @@ jobs:
           urls=(
             'https://aloula.hanane.today/'
             'https://hanane.today/rihlat-aloula-bac/'
+            'https://aloula.hanane.today/lessons/tahawwulat-kubra.html'
           )
           overall=up
           details=''
