@@ -101,3 +101,17 @@ tbody tr:nth-child(even) td{ background:#f7fafd; }
   .card,.questions li,tr{ break-inside:avoid; }
 }
 @media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+
+/* ===== موارد الدرس ===== */
+.resources{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; margin:14px 0; }
+.res{ display:flex; align-items:center; gap:13px; text-decoration:none; background:var(--paper);
+  border:1px solid var(--line); border-right:6px solid var(--navy); border-radius:12px;
+  padding:13px 15px; box-shadow:var(--card-sh); transition:.18s; }
+.res:hover{ transform:translateY(-3px); box-shadow:var(--shadow); border-right-color:var(--orange); }
+.res-ic{ flex:0 0 auto; width:46px; height:46px; border-radius:11px; display:grid; place-items:center;
+  font-size:1.5rem; background:linear-gradient(135deg,var(--navy),var(--navy-2)); }
+.res-tx{ flex:1; min-width:0; }
+.res-tx b{ display:block; color:var(--navy); font-size:.98rem; line-height:1.5; }
+.res-tx small{ font-family:Tahoma,sans-serif; color:var(--muted); font-size:.75rem; }
+.res-go{ flex:0 0 auto; font-family:Tahoma,sans-serif; font-weight:800; color:var(--orange); font-size:.82rem; }
+@media print{ .resources{ grid-template-columns:1fr 1fr; } .res{ break-inside:avoid; } }
