@@ -86,8 +86,27 @@ def render_infographic(sec):
                 f'<a href="{e(img["src"])}" download>تحميل الصورة ⤓</a></figcaption></figure>')
     return out + "</div>"
 
+def render_resources(sec):
+    out = f'<div class="banner">{e(sec["title"])}</div>'
+    if sec.get("lead"):
+        out += f'<p class="lead">{e(sec["lead"])}</p>'
+    out += '<div class="resources">'
+    for r in sec["items"]:
+        icon = e(r.get("icon", "🔗"))
+        kind = e(r.get("kind", "مورد"))
+        out += (f'<a class="res" href="{e(r["url"])}" target="_blank" rel="noopener">'
+                f'<span class="res-ic" aria-hidden="true">{icon}</span>'
+                f'<span class="res-tx"><b>{e(r["title"])}</b><small>{kind}</small></span>'
+                f'<span class="res-go">فتح ⤴</span></a>')
+    out += '</div>'
+    if sec.get("note"):
+        n = sec["note"]
+        out += render_note(n.get("type", "method"), n["label"], n["text"], n.get("icon", "📂"))
+    return out
+
 RENDERERS = {"table": render_table, "cards": render_cards, "questions": render_questions,
-             "text": render_text, "application": render_application, "infographic": render_infographic}
+             "text": render_text, "application": render_application,
+             "infographic": render_infographic, "resources": render_resources}
 
 def build_lesson(data):
     m = data["meta"]
