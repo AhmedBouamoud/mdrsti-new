@@ -12,13 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT_DIR = os.path.join(ROOT, "content")
 OUT_DIR = os.path.join(ROOT, "lessons")
 
-CREST = ('<svg class="crest" viewBox="0 0 100 100" role="img" aria-label="شعار مؤسسة الحنان">'
-         '<rect x="6" y="6" width="88" height="88" rx="20" fill="#12294a" stroke="#e0a53a" stroke-width="4"/>'
-         '<rect x="30" y="46" width="40" height="30" fill="#fff"/>'
-         '<path d="M26 46l24-16 24 16z" fill="#e0a53a"/>'
-         '<rect x="46" y="58" width="8" height="18" fill="#12294a"/>'
-         '<rect x="34" y="52" width="7" height="7" fill="#2b6cb0"/>'
-         '<rect x="59" y="52" width="7" height="7" fill="#2b6cb0"/></svg>')
+CREST = '<img class="crest" src="../assets/img/ab-icon.png" alt="شعار الأستاذ أحمد بوعمود" width="160" height="160">'
 
 def e(s):
     return html.escape(str(s), quote=True)
@@ -122,6 +116,8 @@ def build_lesson(data):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(m["title"])} | رحلة الأولى باك</title>
 <meta name="description" content="{e(m["title"])} — {e(m["subject"])} · {e(m["level"])}. درس كامل ضمن رحلة الأولى باك.">
+<link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/css/lesson.css">
 </head>
 <body data-lesson="{e(m["id"])}">
@@ -133,10 +129,10 @@ def build_lesson(data):
 <div class="sheet-wrap"><article class="sheet">
   <header class="doc-head">
     <div class="brand">{CREST}<div class="brand-txt">
-      <span class="inst">مؤسسة الحنان للتعليم الخاص</span>
-      <span class="sub">مادة التاريخ والجغرافيا</span>
+      <span class="inst">الأستاذ أحمد بوعمود</span>
+      <span class="sub">أستاذ التاريخ والجغرافيا</span>
     </div></div>
-    <div class="season">الموسم الدراسي<br>2025 / 2026</div>
+    <div class="season">الموسم الدراسي<br><bdi dir="ltr">2026 / 2027</bdi></div>
   </header>
   <div class="title-band">
     <span class="lvl">مادة {e(m["subject"])} <span>|</span> المستوى: {e(m["level"])}</span>
@@ -146,7 +142,7 @@ def build_lesson(data):
   {"".join(body)}
   <div class="doc-foot">
     <span>إعداد: الأستاذ أحمد بوعمود — أستاذ الاجتماعيات</span>
-    <span>مؤسسة الحنان · ahmedbouamoud.com</span>
+    <span>ذ. أحمد بوعمود — مؤسسة الحنان الخاصة | <bdi dir="ltr">2026-2027</bdi></span>
   </div>
 </article></div>
 </body>
