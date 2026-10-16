@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""يولّد الصفحة الرئيسية (index.html) من ملفات المحتوى، بالهوية الرسمية لمؤسسة الحنان (شعار GSH)."""
+"""يولّد الصفحة الرئيسية (index.html) من ملفات المحتوى، بالهوية الشخصية للأستاذ أحمد بوعمود."""
 import json, glob, html, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,10 +48,11 @@ def build():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>رحلة الأولى باك | الاجتماعيات — التاريخ والجغرافيا</title>
-<meta name="description" content="رحلة الأولى باك: دروس الاجتماعيات الكاملة (التاريخ والجغرافيا) للسنة الأولى بكالوريا — إعداد الأستاذ أحمد بوعمود، مجموعة مدارس الحنان الخاصة.">
+<meta name="description" content="رحلة الأولى باك: دروس الاجتماعيات الكاملة (التاريخ والجغرافيا) للسنة الأولى بكالوريا — إعداد الأستاذ أحمد بوعمود، أستاذ التاريخ والجغرافيا.">
 <meta name="theme-color" content="#0f2438">
-<link rel="icon" href="./assets/img/gsh-mark.png">
-<link rel="apple-touch-icon" href="./assets/img/gsh-mark.png">
+<link rel="icon" href="./assets/img/favicon.ico" sizes="any">
+<link rel="icon" href="./assets/img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png">
 <style>
 :root{{--navy:#0f2438;--navy-2:#173f5f;--ink:#22364d;--muted:#5d6f83;--orange:#e8820e;--gold:#e0a53a;
 --desk:#eef1f5;--card:#fff;--line:#dce4ee;--shadow:0 18px 45px rgba(15,36,56,.14);--card-sh:0 6px 18px rgba(15,36,56,.08);--max:1120px;}}
@@ -87,7 +88,7 @@ color:#fff;padding:clamp(40px,7vw,76px) clamp(20px,5vw,40px);text-align:center;}
 .hero::after{{width:300px;height:300px;background:radial-gradient(circle,#2f80c4,#173f5f 45%,transparent 72%);bottom:-130px;right:-80px;}}
 .hero-in{{position:relative;z-index:2;max-width:820px;margin:auto;}}
 .hero-logo{{background:#fff;border-radius:22px;padding:20px 28px;display:inline-block;
-box-shadow:0 22px 55px rgba(0,0,0,.30);margin-bottom:24px;max-width:min(86vw,360px);}}
+box-shadow:0 22px 55px rgba(0,0,0,.30);margin-bottom:24px;max-width:min(70vw,260px);}}
 .hero-logo img{{display:block;width:100%;height:auto;}}
 .eyebrow{{display:inline-block;font-family:Tahoma,sans-serif;color:var(--gold);font-weight:800;font-size:.82rem;letter-spacing:.5px;
 border:1px solid rgba(224,165,58,.4);padding:5px 16px;border-radius:999px;margin-bottom:18px;}}
@@ -139,6 +140,7 @@ display:grid;place-items:center;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.3)
 .foot-in .chip img{{width:100%;height:100%;object-fit:contain;}}
 .foot-in b{{color:#fff;}}
 .foot-in small{{font-family:Tahoma,sans-serif;font-size:.78rem;}}
+.foot-in small.sig{{color:#9fb0c2;font-size:.72rem;}}
 .foot-site{{font-family:Tahoma,sans-serif;font-size:.82rem;color:var(--gold);}}
 
 @media (max-width:520px){{.topnav .links{{display:none;}} .stat{{flex:1;min-width:0;}}}}
@@ -149,8 +151,8 @@ display:grid;place-items:center;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.3)
 {CREST_NAV}
 <header class="hero">
   <div class="hero-in">
-    <div class="hero-logo"><img src="./assets/img/gsh-logo.png" alt="مجموعة مدارس الحنان الخاصة — الأستاذ أحمد بوعمود، أستاذ التاريخ والجغرافيا" width="760" height="495"></div>
-    <span class="eyebrow">مجموعة مدارس الحنان الخاصة</span>
+    <div class="hero-logo"><img src="./assets/img/ab-logo.png" alt="شعار الأستاذ أحمد بوعمود — أستاذ التاريخ والجغرافيا" width="440" height="440"></div>
+    <span class="eyebrow">الأستاذ أحمد بوعمود · أستاذ التاريخ والجغرافيا</span>
     <h1>رحلة <em>الأولى باك</em></h1>
     <p class="lead">دروس الاجتماعيات الكاملة — التاريخ والجغرافيا — للسنة الأولى بكالوريا، منظّمة ومراجَعة وقابلة للقراءة والطباعة على الهاتف والحاسوب.</p>
     <div class="pills">
@@ -175,7 +177,7 @@ display:grid;place-items:center;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.3)
 </main>
 <footer>
   <div class="foot-in">
-    <div class="fb">{CHIP_FOOT}<div><b>الأستاذ أحمد بوعمود</b><br><small>أستاذ التاريخ والجغرافيا — مجموعة مدارس الحنان الخاصة</small></div></div>
+    <div class="fb">{CHIP_FOOT}<div><b>الأستاذ أحمد بوعمود</b><br><small>أستاذ التاريخ والجغرافيا</small><br><small class="sig">ذ. أحمد بوعمود — مؤسسة الحنان الخاصة | <bdi dir="ltr">2026-2027</bdi></small></div></div>
     <div class="foot-site">aloula.hanane.today</div>
   </div>
 </footer>
@@ -184,11 +186,11 @@ display:grid;place-items:center;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.3)
     open(OUT, "w", encoding="utf-8").write(page)
     print(f"✅ index.html: {len(hist)} تاريخ + {len(geo)} جغرافيا = {total} درسًا")
 
-CHIP = '<span class="chip"><img src="./assets/img/gsh-mark.png" alt="شعار مجموعة مدارس الحنان" width="200" height="200"></span>'
-CHIP_FOOT = '<span class="chip"><img src="./assets/img/gsh-mark.png" alt="شعار مجموعة مدارس الحنان" width="200" height="200"></span>'
+CHIP = '<span class="chip"><img src="./assets/img/ab-icon.png" alt="شعار الأستاذ أحمد بوعمود" width="160" height="160"></span>'
+CHIP_FOOT = '<span class="chip"><img src="./assets/img/ab-icon.png" alt="شعار الأستاذ أحمد بوعمود" width="160" height="160"></span>'
 
 CREST_NAV = (f'<nav class="topnav"><div class="brand">{CHIP}'
-             f'<div><b>رحلة الأولى باك</b><small>الاجتماعيات · مؤسسة الحنان</small></div></div>'
+             f'<div><b>رحلة الأولى باك</b><small>الاجتماعيات · ذ. أحمد بوعمود</small></div></div>'
              f'<div class="links"><a href="#التاريخ">التاريخ</a><a href="#الجغرافيا">الجغرافيا</a></div></nav>')
 
 if __name__ == "__main__":
