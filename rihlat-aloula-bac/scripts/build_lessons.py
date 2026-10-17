@@ -88,15 +88,36 @@ def render_resources(sec):
     for r in sec["items"]:
         icon = e(r.get("icon", "🔗"))
         kind = e(r.get("kind", "مورد"))
-        out += (f'<a class="res" href="{e(r["url"])}" target="_blank" rel="noopener">'
+        target = ' download' if r["url"].startswith("../") else ' target="_blank" rel="noopener"'
+        out += (f'<a class="res" href="{e(r["url"])}"{target}>'
                 f'<span class="res-ic" aria-hidden="true">{icon}</span>'
                 f'<span class="res-tx"><b>{e(r["title"])}</b><small>{kind}</small></span>'
-                f'<span class="res-go">فتح ⤴</span></a>')
+                f'<span class="res-go">{"تحميل ⤓" if r["url"].startswith("../") else "فتح ⤴"}</span></a>')
     out += '</div>'
     if sec.get("note"):
         n = sec["note"]
         out += render_note(n.get("type", "method"), n["label"], n["text"], n.get("icon", "📂"))
     return out
+
+def render_notebook(nb):
+    """«أكتب في دفتري»: فقرة تُنقل حرفيًا من ملف الدرس إلى الدفتر."""
+    if not nb:
+        return ""
+    out = '<div class="notebook"><div class="nb-head"><span class="nb-ic" aria-hidden="true">✍️</span>أكتب في دفتري'
+    out += '</div><div class="nb-body">'
+    for b in nb["blocks"]:
+        if "h" in b:
+            out += f'<h4>{e(b["h"])}</h4>'
+        elif "p" in b:
+            out += f'<p>{e(b["p"])}</p>'
+        elif "ul" in b:
+            out += "<ul>" + "".join(f"<li>{e(x)}</li>" for x in b["ul"]) + "</ul>"
+        elif "table" in b:
+            t = b["table"]
+            head = "".join(f"<th>{e(h)}</th>" for h in t["head"])
+            rows = "".join("<tr>" + "".join(f"<td>{e(c)}</td>" for c in r) + "</tr>" for r in t["rows"])
+            out += f'<table><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table>'
+    return out + "</div></div>"
 
 RENDERERS = {"table": render_table, "cards": render_cards, "questions": render_questions,
              "text": render_text, "application": render_application,
@@ -105,10 +126,13 @@ RENDERERS = {"table": render_table, "cards": render_cards, "questions": render_q
 def build_lesson(data):
     m = data["meta"]
     body = [render_note("intro", "مقدمة", data["intro"], "📘"),
-            render_note("problem", "الإشكالية المركزية", data["problematic"], "❓")]
+            render_note("problem", "الإشكالية المركزية", data["problematic"], "❓"),
+            render_notebook(data.get("notebook_intro"))]
     for sec in data["sections"]:
         body.append(RENDERERS[sec["kind"]](sec))
+        body.append(render_notebook(sec.get("notebook")))
     body.append(render_note("conclusion", "خاتمة", data["conclusion"], "✍️"))
+    body.append(render_notebook(data.get("notebook_conclusion")))
     page = f'''<!doctype html>
 <html lang="ar" dir="rtl">
 <head>

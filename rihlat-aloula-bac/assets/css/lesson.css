@@ -115,3 +115,19 @@ tbody tr:nth-child(even) td{ background:#f7fafd; }
 .res-tx small{ font-family:Tahoma,sans-serif; color:var(--muted); font-size:.75rem; }
 .res-go{ flex:0 0 auto; font-family:Tahoma,sans-serif; font-weight:800; color:var(--orange); font-size:.82rem; }
 @media print{ .resources{ grid-template-columns:1fr 1fr; } .res{ break-inside:avoid; } }
+
+/* ===== أكتب في دفتري ===== */
+.notebook{ margin:18px 0 26px; border:2px solid var(--gold); border-radius:14px; overflow:hidden; background:#fffdf6; box-shadow:var(--card-sh); }
+.nb-head{ display:flex; align-items:center; gap:10px; background:var(--gold); color:#1b1b1b; font-family:Tahoma,sans-serif; font-weight:700; font-size:1rem; padding:9px 16px; }
+.nb-ic{ font-size:1.15rem; }
+.nb-body{ padding:12px 18px 14px; line-height:1.95; border-right:4px double rgba(200,40,40,.35); }
+.nb-body p{ margin:0 0 8px; }
+.nb-body h4{ margin:2px 0 6px; color:var(--navy); font-size:1.02rem; }
+.nb-body ul{ margin:0 0 6px; padding-right:22px; }
+.nb-body li{ margin-bottom:4px; }
+.nb-body table{ width:100%; min-width:0; table-layout:fixed; border-collapse:collapse; margin:6px 0 10px; background:#fff; line-height:1.55; font-size:.93rem; }
+.nb-body th,.nb-body td{ text-align:right; border:1px solid rgba(15,36,56,.3); padding:6px 7px; vertical-align:top; overflow-wrap:anywhere; }
+.nb-body th{ background:#f3ead2; color:var(--navy); text-align:center; }
+.nb-body tbody tr:nth-child(even) td{ background:#fbf7ea; }
+@media (max-width:560px){ .nb-body{ padding:10px 12px; } .nb-body table{ font-size:.8rem; } .nb-body th,.nb-body td{ padding:5px 4px; } }
+@media print{ .notebook{ box-shadow:none; } .nb-head,.nb-body th{ -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
