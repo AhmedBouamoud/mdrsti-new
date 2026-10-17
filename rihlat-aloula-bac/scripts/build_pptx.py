@@ -234,8 +234,9 @@ class Deck:
 
     def nb_table(self, t, heading):
         ncol = len(t["head"])
-        per = 3
         rows = t["rows"]
+        longest = max(sum(len(c) for c in r) for r in rows)   # الصفوف الطويلة تأخذ شريحة أكبر
+        per = 3 if longest <= 120 else (2 if longest <= 160 else 1)
         for i in range(0, len(rows), per):
             chunk = rows[i:i + per]
             s, ph = self._nb_slide()
