@@ -223,6 +223,98 @@ def task(slide, steps, title="المهمة"):
         text(slide, X0 + 0.3, y, X1 - X0 - 1.2, h, s, 24, False, INK, "r", "m")
 
 
+# ---------------- أنواع إثراء ----------------
+def hub(slide, center, items):
+    """مركز وأطراف: دائرة مركزية تحيط بها عناصر متصلة بها."""
+    import math
+    cx, cy = (X0 + X1) / 2, (Y0 + Y1) / 2
+    n = len(items); rx, ry = 3.35, 1.45
+    for i, it in enumerate(items):
+        a = math.pi / 2 + 2 * math.pi * i / n
+        x, y = cx + rx * math.cos(a), cy - ry * math.sin(a)
+        ln = slide.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(cx), Inches(cy), Inches(x), Inches(y))
+        ln.line.color.rgb = GOLD; ln.line.width = Pt(2.25)
+    circle(slide, cx, cy, 1.75, NAVY)
+    text(slide, cx - 0.85, cy - 0.6, 1.7, 1.2, center, 21, True, WHITE, "ctr", "m", 0.95)
+    for i, it in enumerate(items):
+        a = math.pi / 2 + 2 * math.pi * i / n
+        x, y = cx + rx * math.cos(a), cy - ry * math.sin(a)
+        col = ACC[i % len(ACC)]
+        w, h = 2.6, 1.1
+        box(slide, x - w / 2, y - h / 2, w, h, fill=col, radius=0.3)
+        text(slide, x - w / 2 + 0.05, y - h / 2 + 0.02, w - 0.1, 0.5, it["title"], 20, True, WHITE, "ctr", "m")
+        text(slide, x - w / 2 + 0.05, y - h / 2 + 0.5, w - 0.1, 0.55, it["text"], 16, False, WHITE, "ctr", "t")
+
+
+def compare(slide, pairs):
+    """مقارنات زوجية: [{a, a_def, b, b_def, link}] — العمود الأيمن مقابل الأيسر."""
+    n = len(pairs); gap = 0.16
+    h = (Y1 - Y0 - gap * (n - 1)) / n
+    cw = 3.85
+    for i, pr in enumerate(pairs):
+        y = Y0 + i * (h + gap)
+        for side, (term, d) in enumerate([(pr["a"], pr["a_def"]), (pr["b"], pr["b_def"])]):
+            x = X1 - cw if side == 0 else X0
+            col = ACC[(2 * i + side) % len(ACC)]
+            box(slide, x, y, cw, h, fill=WHITE, line=col, radius=0.15)
+            box(slide, x + cw - 1.45 if side == 0 else x + cw - 1.45, y, 1.45, h, fill=col, radius=0.15)
+            text(slide, x + cw - 1.45, y, 1.45, h, term, 19, True, WHITE, "ctr", "m", 0.95)
+            text(slide, x + 0.1, y, cw - 1.6, h, d, 18, False, INK, "r", "m", 1.0)
+        mx = X0 + cw; mw = X1 - cw - mx
+        circle(slide, mx + mw / 2, y + h / 2, 0.62, GOLD, pr.get("link", "×"), 18, NAVY)
+
+
+def quiz(slide, q, options, answer=None, note=None):
+    """سؤال اختيار من متعدد؛ مع answer تُبرز الإجابة الصحيحة."""
+    box(slide, X0, Y0, X1 - X0, 1.05, fill=NAVY, radius=0.2)
+    text(slide, X0 + 0.25, Y0, X1 - X0 - 0.5, 1.05, q, 24, True, WHITE, "ctr", "m")
+    letters = ["أ", "ب", "ج", "د"]
+    n = len(options); gap = 0.2
+    w = (X1 - X0 - gap * (n - 1)) / n
+    y = Y0 + 1.35; h = 1.55
+    for i, op in enumerate(options):
+        x = X1 - (i + 1) * w - i * gap
+        ok = answer is not None and i == answer
+        dim = answer is not None and not ok
+        fill = RGBColor(0x2E, 0x7D, 0x32) if ok else (RGBColor(0xEE, 0xEB, 0xE4) if dim else WHITE)
+        box(slide, x, y, w, h, fill=fill, line=None if ok else RGBColor(0xDD, 0xD5, 0xC4), radius=0.15)
+        circle(slide, x + w - 0.42, y + 0.42, 0.5, GOLD if not ok else WHITE, letters[i], 18, NAVY if not ok else RGBColor(0x2E, 0x7D, 0x32))
+        text(slide, x + 0.15, y + 0.2, w - 0.8, h - 0.3, op, 21, ok, WHITE if ok else (MUTED if dim else INK), "r", "m")
+        if ok:
+            text(slide, x + 0.1, y + h - 0.45, 0.6, 0.4, "✓", 22, True, WHITE, "ctr", "m")
+    if answer is not None and note:
+        box(slide, X0, Y1 - 0.95, X1 - X0, 0.85, fill=GOLD_LT, radius=0.3)
+        text(slide, X0 + 0.25, Y1 - 0.95, X1 - X0 - 0.5, 0.85, note, 19, False, NAVY, "ctr", "m")
+    elif answer is None:
+        text(slide, X0, Y1 - 0.7, X1 - X0, 0.5, "فكّر… ثم أجب", 18, True, GOLD, "ctr", "m")
+
+
+def mindmap(slide, center, branches):
+    """خريطة ذهنية: مركز + فروع، لكل فرع عنوان ونقاط قصيرة."""
+    cx, cy = (X0 + X1) / 2, (Y0 + Y1) / 2
+    n = len(branches)
+    right = branches[: (n + 1) // 2]; left = branches[(n + 1) // 2:]
+    bw = 3.0
+    for side, group in ((1, right), (-1, left)):
+        m = len(group)
+        if not m:
+            continue
+        h = (Y1 - Y0 - 0.15 * (m - 1)) / m
+        for j, br in enumerate(group):
+            y = Y0 + j * (h + 0.15)
+            x = X1 - bw if side == 1 else X0
+            col = ACC[(branches.index(br)) % len(ACC)]
+            ex = x if side == 1 else x + bw
+            ln = slide.shapes.add_connector(MSO_CONNECTOR.STRAIGHT, Inches(cx + side * 0.9), Inches(cy), Inches(ex), Inches(y + h / 2))
+            ln.line.color.rgb = col; ln.line.width = Pt(2.5)
+            box(slide, x, y, bw, h, fill=WHITE, line=col, radius=0.12)
+            box(slide, x, y, bw, 0.45, fill=col, radius=0.25)
+            text(slide, x + 0.05, y, bw - 0.1, 0.45, br["title"], 17, True, WHITE, "ctr", "m")
+            text(slide, x + 0.1, y + 0.47, bw - 0.2, h - 0.5, "، ".join(br["points"]), 16, False, INK, "ctr", "m", 1.0)
+    circle(slide, cx, cy, 1.8, NAVY)
+    text(slide, cx - 0.85, cy - 0.65, 1.7, 1.3, center, 18, True, WHITE, "ctr", "m", 0.95)
+
+
 KINDS = {"timeline": timeline, "cards": cards, "quad": quad, "chain": chain,
          "questions": questions, "concepts": concepts, "big": big, "task": task}
 
@@ -237,3 +329,7 @@ def render(slide, spec):
     elif k == "concepts": concepts(slide, spec["items"])
     elif k == "big": big(slide, spec["text"], spec.get("sub"))
     elif k == "task": task(slide, spec["steps"], spec.get("label", "المهمة"))
+    elif k == "hub": hub(slide, spec["center"], spec["items"])
+    elif k == "compare": compare(slide, spec["pairs"])
+    elif k == "quiz": quiz(slide, spec["q"], spec["options"], spec.get("answer"), spec.get("note"))
+    elif k == "mindmap": mindmap(slide, spec["center"], spec["branches"])

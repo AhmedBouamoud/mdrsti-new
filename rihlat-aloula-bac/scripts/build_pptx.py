@@ -147,6 +147,13 @@ class Deck:
             set_text(ph[1], page, size, bullets=bullets, bold_first=bold_first)
 
     def visual(self, spec):
+        if spec["type"] == "quiz" and "answer" in spec and not spec.get("_reveal"):
+            q = dict(spec); q.pop("answer"); q["_reveal"] = True
+            self.visual(q)                                  # السؤال
+            a = dict(spec); a["_reveal"] = True
+            a["title"] = spec["title"] + " — الجواب"
+            self.visual(a)                                  # الجواب
+            return
         s = self.prs.slides.add_slide(self.L["شرح"])
         ph = self.phs(s)
         set_text(ph[0], [spec["title"]], 28 if len(spec["title"]) > 38 else 32)
