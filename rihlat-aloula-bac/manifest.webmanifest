@@ -1,13 +1,43 @@
 {
-  "name": "رحلة الأولى باك",
-  "short_name": "رحلة 1 باك",
-  "description": "دروس التاريخ والجغرافيا الكاملة للأولى بكالوريا.",
+  "name": "رحلة الأولى باك — الاجتماعيات",
+  "short_name": "رحلة الأولى باك",
+  "description": "دروس التاريخ والجغرافيا للسنة الأولى بكالوريا — الأستاذ أحمد بوعمود",
   "lang": "ar",
   "dir": "rtl",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5efe3",
-  "theme_color": "#7b1e24",
-  "icons": []
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#0f2438",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "./assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/img/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }
