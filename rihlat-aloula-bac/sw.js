@@ -1,6 +1,6 @@
 // تطبيق «رحلة الأولى باك»: يحفظ الصفحة الرئيسية والدروس الـ17 للقراءة دون إنترنت.
 // الصور الكبيرة (الإنفوغرافيا) لا تُحمَّل مسبقًا رفقًا بباقة الهاتف، بل تُحفَظ عند أول فتح لها.
-const CACHE_NAME = 'rihlat-aloula-bac-app-v2';
+const CACHE_NAME = 'rihlat-aloula-bac-app-v3';
 const LESSONS = [
   'dughut-istiimariya', 'geo-iidad-turab', 'geo-ittihad-urubbi', 'geo-ma-tasahhur',
   'geo-mawarid-maghrib', 'geo-sin', 'geo-tahyia-hadariya', 'geo-tanmiya', 'geo-usa',
