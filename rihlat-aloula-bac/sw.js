@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rihlat-aloula-bac-restored-v3';
+const CACHE_NAME = 'rihlat-aloula-bac-restored-v4';
 const CORE = [
   './',
   './index.html',

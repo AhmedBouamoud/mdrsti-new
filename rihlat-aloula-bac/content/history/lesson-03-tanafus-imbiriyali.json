@@ -81,8 +81,7 @@
       {"icon": "📊", "kind": "عرض تقديمي (بوربوينت)", "title": "التنافس الإمبريالي — عرض الدرس", "url": "https://drive.google.com/file/d/1JC8hQIQGQwHhFp6YzdA2Zb6VdT25XOk_/view"},
       {"icon": "📄", "kind": "وثيقة الدرس (PDF)", "title": "التنافس الإمبريالي واندلاع الحرب العالمية الأولى", "url": "https://drive.google.com/file/d/1Q3_bQION_qYcZmNRBXVzxVJZPslJYVbw/view"},
       {"icon": "🖼️", "kind": "صور توضيحية (6 صور)", "title": "صور الدرس: الأحلاف والأزمات والحرب", "url": "https://drive.google.com/drive/folders/1s_IqUdxTSBoth4z1mpUxfZNdptk2BWPR"}
-    ],
-      "note": {"type": "method", "label": "ملاحظة", "icon": "📂", "text": "تُفتح هذه الموارد بعد ضبط مشاركة مجلد الدرس في درايف على «أي شخص لديه الرابط»."}
+    ]
     },
     {"kind": "infographic", "title": "تاسعًا: الملحق البصري (إنفوغرافيا الدرس)", "lead": "إنفوغرافيا الدرس ونسخة التمارين من كتيب الأستاذ أحمد بوعمود:", "images": [
       {"src": "../assets/infographics/lesson-03-tanafus-dars.jpg", "alt": "إنفوغرافيا درس التنافس الإمبريالي واندلاع الحرب العالمية الأولى", "caption": "إنفوغرافيا الدرس"},
