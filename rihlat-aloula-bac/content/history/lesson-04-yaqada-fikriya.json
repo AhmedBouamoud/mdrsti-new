@@ -81,8 +81,7 @@
       {"icon": "📊", "kind": "عرض تقديمي (بوربوينت)", "title": "اليقظة الفكرية — عرض الدرس", "url": "https://drive.google.com/file/d/1L8SYedJEYWyOwkpf3Gv_xfwR0Ge-Xqhy/view"},
       {"icon": "📄", "kind": "وثيقة الدرس (PDF)", "title": "اليقظة الفكرية بالمشرق العربي", "url": "https://drive.google.com/file/d/1pw9t7JnFQgqeeeCUE15IZpQ7qEBp58Qo/view"},
       {"icon": "🖼️", "kind": "صور وأعلام", "title": "صور الدرس: أعلام النهضة ومشاهدها", "url": "https://drive.google.com/drive/folders/1pe09X_NXsc98D1DhhSAfhOq-5xxK2pXx"}
-    ],
-      "note": {"type": "method", "label": "ملاحظة", "icon": "📂", "text": "تُفتح هذه الموارد بعد ضبط مشاركة مجلد الدرس في درايف على «أي شخص لديه الرابط»."}
+    ]
     },
     {"kind": "infographic", "title": "تاسعًا: الملحق البصري (إنفوغرافيا الدرس)", "lead": "إنفوغرافيا الدرس ونسخة التمارين من كتيب الأستاذ أحمد بوعمود:", "images": [
       {"src": "../assets/infographics/lesson-04-yaqada-dars.jpg", "alt": "إنفوغرافيا درس اليقظة الفكرية في المشرق العربي", "caption": "إنفوغرافيا الدرس"},
