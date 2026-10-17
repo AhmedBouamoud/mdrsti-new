@@ -12,6 +12,8 @@ from pptx.util import Pt, Inches, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.oxml.ns import qn
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import pptx_visuals as V
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAVY = RGBColor(0x0B, 0x22, 0x42)
@@ -144,6 +146,13 @@ class Deck:
             size = 26 if sum(len(x) for x in page) < 380 else 24
             set_text(ph[1], page, size, bullets=bullets, bold_first=bold_first)
 
+    def visual(self, spec):
+        s = self.prs.slides.add_slide(self.L["شرح"])
+        ph = self.phs(s)
+        set_text(ph[0], [spec["title"]], 28 if len(spec["title"]) > 38 else 32)
+        ph[1]._element.getparent().remove(ph[1]._element)
+        V.render(s, spec)
+
     def _nb_slide(self):
         s = self.prs.slides.add_slide(self.L["أكتب في دفتري"])
         return s, self.phs(s)[0]
@@ -155,9 +164,9 @@ class Deck:
         def flush():
             if not text_buf:
                 return
-            for page in fit(text_buf, 420):
+            for page in fit(text_buf, 330):
                 s, ph = self._nb_slide()
-                size = 26 if sum(len(x) for x in page) < 300 else 24
+                size = 26 if sum(len(x) for x in page) < 220 else 24
                 set_text(ph, page, size)
             text_buf.clear()
 
@@ -195,7 +204,7 @@ class Deck:
             else:
                 ph._element.getparent().remove(ph._element)
             longest = max(len(c) for r in chunk for c in r)
-            size = 20 if longest > 70 else 22
+            size = 18 if (ncol >= 3 and longest > 70) else 20
             gt = s.shapes.add_table(len(chunk) + 1, ncol, L, top,
                                     W, Inches(0.5 * (len(chunk) + 1))).table
             tblPr = gt._tbl.tblPr
@@ -244,10 +253,38 @@ def short_title(t):
     return re.sub(r"^[^:]{1,12}:\s*", "", t).strip()
 
 
+def build_visual(d, deck):
+    """مسار احترافي: شرائح شرح بصرية مكتوبة يدويًا في d["pptx"] + «أكتب في دفتري» حرفيًا."""
+    P = d["pptx"]
+    nbs = [s["notebook"] for s in d["sections"] if s.get("notebook")]
+    for spec in P.get("intro", []):
+        deck.visual(spec)
+    if d.get("notebook_intro"):
+        deck.notebook(d["notebook_intro"]["blocks"])
+    for n, (part, nb) in enumerate(zip(P["parts"], nbs), start=1):
+        deck.axis(n, part["axis"])
+        for spec in part["slides"]:
+            deck.visual(spec)
+        deck.notebook(nb["blocks"])
+    for spec in P.get("tail", []):
+        deck.visual(spec)
+    for spec in P.get("conclusion", []):
+        deck.visual(spec)
+    if d.get("notebook_conclusion"):
+        deck.notebook(d["notebook_conclusion"]["blocks"])
+    deck.closing()
+
+
 def build(slug, template, out):
     d = load(slug)
     m = d["meta"]
     deck = Deck(template)
+    if d.get("pptx"):
+        deck.cover(f'الأولى باكالوريا | {m["subject"]}', m["title"], d["pptx"].get("cover_problem", d["problematic"]))
+        build_visual(d, deck)
+        deck.prs.save(out)
+        print("✅", out, "—", len(deck.prs.slides), "شريحة")
+        return
     deck.cover(f'الأولى باكالوريا | {m["subject"]}', m["title"], d["problematic"])
     deck.explain("مقدمة", [d["intro"]], bullets=False, bold_first=False)
     if d.get("notebook_intro"):
