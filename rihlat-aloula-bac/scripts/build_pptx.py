@@ -102,10 +102,28 @@ def fit(items, budget):
         if cur:
             pieces.append(cur)
     pages, cur, n = [], [], 0
-    for it in pieces:
-        w = len(it) + 25
-        if cur and n + w > budget and not cur[-1].startswith("##"):
-            pages.append(cur); cur, n = [], 0
+    LINE = 55                                    # حروف السطر الواحد تقريبًا بخط 24
+    wt = lambda x: -(-len(x) // (38 if x.startswith("##") else LINE)) * LINE + 20
+    queue = list(pieces)
+    while queue:
+        it = queue.pop(0)
+        w = wt(it)
+        if cur and n + w > budget:
+            carry = []
+            while cur and cur[-1].startswith("##"):   # العنوان ينتقل مع فقرته
+                carry.insert(0, cur.pop())
+            if cur:
+                pages.append(cur)
+                cur = carry; n = sum(wt(x) for x in cur)
+            else:                                    # عناوين + فقرة طويلة لا تتسع: تُقطع الفقرة عند فاصلة
+                cur = carry; n = sum(wt(x) for x in cur)
+                room = max(LINE * 2, budget - n - 20)
+                cut = max(it.rfind("، ", 0, room), it.rfind(" ", 0, room) if it.rfind("، ", 0, room) < room // 2 else -1)
+                if 0 < cut < len(it) - 10:
+                    head_, rest = it[:cut + 1].strip(), it[cut + 1:].strip()
+                    cur.append(head_); pages.append(cur); cur, n = [], 0
+                    queue.insert(0, rest if rest.startswith("•") or not it.startswith("•") else "  " + rest)
+                    continue
         cur.append(it); n += w
     if cur:
         pages.append(cur)

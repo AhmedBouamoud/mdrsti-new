@@ -430,7 +430,7 @@
         {
           "icon": "📊",
           "kind": "عرض الحصة (بوربوينت) — 2.6 ميغا",
-          "title": "عرض الدرس (64 شريحة) مع «أكتب في دفتري» واختبار فهم",
+          "title": "عرض الدرس (66 شريحة) مع «أكتب في دفتري» واختبار فهم",
           "url": "../downloads/01-tahawwulat-kubra.pptx"
         },
         {
@@ -450,6 +450,12 @@
           "kind": "صور توضيحية (7 صور)",
           "title": "صور الدرس: الثورة الصناعية والتحولات الكبرى",
           "url": "https://drive.google.com/drive/folders/12jA3Jfnh06-TAN71xGc9qb3LyQGuakIF"
+        },
+        {
+          "icon": "📘",
+          "kind": "كتيّب (Word)",
+          "title": "كتيب التاريخ — الأولى باك (دروس وتمارين)",
+          "url": "https://drive.google.com/file/d/1_quMrZshwyxKJJopkRN2JzozRLuisn2E/view"
         }
       ],
       "note": {
