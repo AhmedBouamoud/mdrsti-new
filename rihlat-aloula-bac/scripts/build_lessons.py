@@ -118,6 +118,10 @@ def build_lesson(data):
 <meta name="description" content="{e(m["title"])} — {e(m["subject"])} · {e(m["level"])}. درس كامل ضمن رحلة الأولى باك.">
 <link rel="icon" href="../assets/img/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0f2438">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="رحلة الأولى باك">
 <link rel="stylesheet" href="../assets/css/lesson.css">
 </head>
 <body data-lesson="{e(m["id"])}">
@@ -145,6 +149,7 @@ def build_lesson(data):
     <span>ذ. أحمد بوعمود — مؤسسة الحنان الخاصة | <bdi dir="ltr">2026-2027</bdi></span>
   </div>
 </article></div>
+<script>if('serviceWorker' in navigator){{navigator.serviceWorker.register('../sw.js',{{scope:'../'}}).catch(function(){{}});}}</script>
 </body>
 </html>'''
     return page

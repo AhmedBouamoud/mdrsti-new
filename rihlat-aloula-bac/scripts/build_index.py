@@ -3,6 +3,9 @@
 """يولّد الصفحة الرئيسية (index.html) من ملفات المحتوى، بالهوية الشخصية للأستاذ أحمد بوعمود."""
 import json, glob, html, os
 
+INSTALL_SNIPPET = '\n<!-- تثبيت التطبيق -->\n<button id="installApp" type="button" hidden style="position:fixed;bottom:16px;left:16px;z-index:50;align-items:center;gap:8px;border:0;border-radius:999px;padding:11px 18px;background:#0f2438;color:#fff;font:700 .95rem Tahoma,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer">📲 ثبّت التطبيق</button>\n<div id="iosHint" hidden style="position:fixed;bottom:72px;left:16px;right:16px;max-width:360px;z-index:50;background:#fff;color:#12294a;border:2px solid #e0a53a;border-radius:14px;padding:12px 14px;font:.92rem/1.7 Tahoma,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.2)">لتثبيت التطبيق على آيفون: اضغط زر المشاركة ⬆️ في أسفل سفاري، ثم اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.</div>\n<script>\n(function(){\n  if(\'serviceWorker\' in navigator){ window.addEventListener(\'load\',function(){ navigator.serviceWorker.register(\'./sw.js\',{scope:\'./\'}).catch(function(){}); }); }\n  var btn=document.getElementById(\'installApp\'), hint=document.getElementById(\'iosHint\'), deferred=null;\n  var standalone=window.matchMedia(\'(display-mode: standalone)\').matches||window.navigator.standalone===true;\n  if(standalone) return;\n  function show(){ btn.hidden=false; btn.style.display=\'flex\'; }\n  window.addEventListener(\'beforeinstallprompt\',function(e){ e.preventDefault(); deferred=e; show(); });\n  var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);\n  if(ios) show();\n  btn.addEventListener(\'click\',function(){\n    if(deferred){ deferred.prompt(); deferred.userChoice.then(function(){ deferred=null; btn.hidden=true; btn.style.display=\'none\'; }); }\n    else if(ios){ hint.hidden=!hint.hidden; }\n  });\n  window.addEventListener(\'appinstalled\',function(){ btn.hidden=true; btn.style.display=\'none\'; hint.hidden=true; });\n})();\n</script>\n'
+
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, "content")
 OUT = os.path.join(ROOT, "index.html")
@@ -51,6 +54,11 @@ def build():
 <meta name="description" content="رحلة الأولى باك: دروس الاجتماعيات الكاملة (التاريخ والجغرافيا) للسنة الأولى بكالوريا — إعداد الأستاذ أحمد بوعمود، أستاذ التاريخ والجغرافيا.">
 <meta name="theme-color" content="#0f2438">
 <link rel="icon" href="./assets/img/favicon.ico" sizes="any">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="رحلة الأولى باك">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="icon" href="./assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png">
 <style>
@@ -181,8 +189,9 @@ display:grid;place-items:center;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.3)
     <div class="foot-site">aloula.hanane.today</div>
   </div>
 </footer>
-</body>
+%%INSTALL%%</body>
 </html>'''
+    page = page.replace("%%INSTALL%%", INSTALL_SNIPPET)
     open(OUT, "w", encoding="utf-8").write(page)
     print(f"✅ index.html: {len(hist)} تاريخ + {len(geo)} جغرافيا = {total} درسًا")
 
