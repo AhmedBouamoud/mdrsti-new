@@ -3,4 +3,4 @@ https://hanane.today/rihlat-aloula-bac/ | http=503 | match=no
 https://aloula.hanane.today/lessons/tahawwulat-kubra.html | http=503 | match=no
 https://aloula.hanane.today/lessons/nidal-maghrib.html | http=503 | match=no
 https://aloula.hanane.today/lessons/geo-sin.html | http=503 | match=no
-2026-10-27T16:30:10Z
+2026-10-27T16:54:35Z
